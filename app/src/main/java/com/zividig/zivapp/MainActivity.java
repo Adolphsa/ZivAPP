@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.zividig.zivapp.tabs.BasePager;
 import com.zividig.zivapp.tabs.CarInfo;
 import com.zividig.zivapp.tabs.CarLife;
@@ -27,6 +28,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_main);
 
         viewPager = (ViewPager) findViewById(R.id.vp_tabs);

@@ -1,6 +1,5 @@
 package com.zividig.zivapp.tabs;
 
-import android.app.Activity;
 import android.app.Application;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -12,7 +11,7 @@ import com.zividig.zivapp.R;
  * 页签viewPager的基类
  * Created by Administrator on 2016-03-14.
  */
-public class BasePager {
+public class BasePager{
 
     public Application mApplication;
     public View view;
