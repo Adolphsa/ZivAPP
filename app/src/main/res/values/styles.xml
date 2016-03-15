@@ -20,4 +20,21 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@drawable/selector_radio_button_textcolor</item>
     </style>
+
+
+    <!-- 车辆信息textView的样式-->
+    <style name="CarInfoTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!-- 车辆信息图片样式-->
+    <style name="CarInfoImgStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
 </resources>
