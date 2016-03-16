@@ -126,4 +126,12 @@ public class MainActivity extends Activity {
             container.removeView((View)object);
         }
     }
+
+//        public void addMap(){
+//            FragmentManager fm = getFragmentManager();
+//            FragmentTransaction transaction = fm.beginTransaction();
+//
+//            transaction.replace(R.id.fl_basePager,new MyMapFragment());
+//            transaction.commit();
+//        }
 }
