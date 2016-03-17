@@ -1,14 +1,19 @@
 package com.zividig.zivapp;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
 import com.baidu.mapapi.SDKInitializer;
+import com.zividig.zivapp.tabs.BaiduMapFragment;
 import com.zividig.zivapp.tabs.BasePager;
 import com.zividig.zivapp.tabs.CarInfo;
 import com.zividig.zivapp.tabs.CarLife;
@@ -23,6 +28,8 @@ public class MainActivity extends Activity {
     private ViewPager viewPager;
     private RadioGroup radioGroup;
 
+    private  BaiduMapFragment baiduMapFragment;
+
     private ArrayList<BasePager> viewPagerList;
 
     @Override
@@ -30,6 +37,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_main);
+
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
 
         viewPager = (ViewPager) findViewById(R.id.vp_tabs);
         radioGroup = (RadioGroup) findViewById(R.id.rg_group);
@@ -65,8 +74,9 @@ public class MainActivity extends Activity {
                         viewPagerList.get(1).basePager_title.setText("车辆信息");
                         break;
                     case R.id.rb_location:
-                        viewPager.setCurrentItem(2,false);
+                        viewPager.setCurrentItem(2, false);
                         viewPagerList.get(2).basePager_title.setText("车辆定位");
+                        addMap();
                         break;
                     case R.id.rb_carLife:
                         viewPager.setCurrentItem(3,false);
@@ -90,7 +100,6 @@ public class MainActivity extends Activity {
             @Override
             public void onPageSelected(int position) {
                 viewPagerList.get(position).initData();//页面被选中的时候加载initData方法
-
             }
 
             @Override
@@ -127,11 +136,16 @@ public class MainActivity extends Activity {
         }
     }
 
-//        public void addMap(){
-//            FragmentManager fm = getFragmentManager();
-//            FragmentTransaction transaction = fm.beginTransaction();
-//
-//            transaction.replace(R.id.fl_basePager,new MyMapFragment());
-//            transaction.commit();
-//        }
+        public void addMap(){
+
+            System.out.println("方法执行了");
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction transaction = fm.beginTransaction();
+
+
+            transaction.add(R.id.fl_basePager, new BaiduMapFragment());
+            transaction.commit();
+        }
+
+
 }
