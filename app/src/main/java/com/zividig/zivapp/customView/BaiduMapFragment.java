@@ -1,4 +1,4 @@
-package com.zividig.zivapp.tabs;
+package com.zividig.zivapp.customView;
 
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapView;
@@ -51,4 +51,6 @@ public class BaiduMapFragment extends Fragment{
 		// activity 销毁时同时销毁地图控件
 		mMapView.onDestroy();
 	}
+
+
 }

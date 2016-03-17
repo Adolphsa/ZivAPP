@@ -17,7 +17,7 @@ public class CarLocation extends BasePager{
 
     @Override
     public void initData() {
-
+        System.out.println("执行了车辆定位的initData方法");
     }
 
 

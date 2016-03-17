@@ -20,7 +20,7 @@ public class CarLife extends BasePager {
     @Override
     public void initData() {
         TextView text = new TextView(mApplication);
-        text.setText("车辆生活");
+        text.setText("行车生活");
         text.setTextSize(20);
         text.setTextColor(Color.RED);
         text.setGravity(Gravity.CENTER);

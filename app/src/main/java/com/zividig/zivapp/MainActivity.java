@@ -3,17 +3,15 @@ package com.zividig.zivapp;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
 import com.baidu.mapapi.SDKInitializer;
-import com.zividig.zivapp.tabs.BaiduMapFragment;
+import com.zividig.zivapp.customView.BaiduMapFragment;
 import com.zividig.zivapp.tabs.BasePager;
 import com.zividig.zivapp.tabs.CarInfo;
 import com.zividig.zivapp.tabs.CarLife;
@@ -37,8 +35,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_main);
-
-        getWindow().setFormat(PixelFormat.TRANSLUCENT);
 
         viewPager = (ViewPager) findViewById(R.id.vp_tabs);
         radioGroup = (RadioGroup) findViewById(R.id.rg_group);
@@ -141,7 +137,6 @@ public class MainActivity extends Activity {
             System.out.println("方法执行了");
             FragmentManager fm = getFragmentManager();
             FragmentTransaction transaction = fm.beginTransaction();
-
 
             transaction.add(R.id.fl_basePager, new BaiduMapFragment());
             transaction.commit();
