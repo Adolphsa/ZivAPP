@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@android:color/holo_blue_light"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_basePager_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="车辆信息"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:background="#00c8ff"
+        android:textColor="#ffffff"
+        />
+
+    <FrameLayout
+        android:id="@+id/map"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

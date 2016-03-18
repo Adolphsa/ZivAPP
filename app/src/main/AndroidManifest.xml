@@ -11,7 +11,7 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WZQYh7pIr0CtZSAc0qgUG8kz" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivityTwo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -23,7 +23,7 @@ public class BaiduMapFragment extends Fragment{
 	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+		System.out.println("地图被创建了");
 		View view = inflater.inflate(R.layout.activity_car_location, container,false);
 		mMapView = (TextureMapView) view.findViewById(R.id.bmapView);
 		baiduMap = mMapView.getMap();

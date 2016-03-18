@@ -1,7 +1,11 @@
-package com.zividig.zivapp.tabs;
+package com.zividig.zivapp.fragment;
 
-import android.app.Application;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
@@ -10,37 +14,37 @@ import com.zividig.zivapp.R;
 
 /**
  * 车辆信息
- * Created by Administrator on 2016-03-14.
+ * Created by Administrator on 2016-03-18.
  */
-public class CarInfo extends BasePager {
+public class CarInfo extends Fragment {
 
-
-    private  View view;
-    private  ImageView speedPoint;
+    private ImageView speedPoint;
     private  ImageView voltagePoint;
     private  ImageView turnSpeedPoint;
     private  ImageView temperaturePoint;
 
-    public CarInfo(Application application) {
-        super(application);
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_car_information,container,false);
 
-        view = View.inflate(application, R.layout.activity_carinfo, null);
         speedPoint = (ImageView) view.findViewById(R.id.img_speed_point);
         voltagePoint = (ImageView) view.findViewById(R.id.img_voltage_point);
         turnSpeedPoint = (ImageView) view.findViewById(R.id.img_turn_speed_point);
         temperaturePoint = (ImageView) view.findViewById(R.id.img_temperature_point);
+
+        initView();
+        return view;
     }
 
-    @Override
-    public void initData() {
-
-        basePager_fl.removeAllViews(); //必须先移除所有的view,否则会报错
-        basePager_fl.addView(view);
+    public void initView() {
 
         initAnimation();
     }
 
     public void initAnimation(){
+
+        System.out.println("动画被调用");
         //速度动画
         RotateAnimation speedRotate = new RotateAnimation(0,-110, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
         speedRotate.setDuration(500);
@@ -64,5 +68,10 @@ public class CarInfo extends BasePager {
         temperatureRotate.setDuration(500);
         temperatureRotate.setFillAfter(true);
         temperaturePoint.setAnimation(temperatureRotate);
+    }
+
+    public void onHiddenChanged(boolean hidden){
+        System.out.println("方法被调用");
+        initAnimation();
     }
 }

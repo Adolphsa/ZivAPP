@@ -8,7 +8,7 @@
         android:id="@+id/tv_basePager_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="实时预览"
+        android:text="设置"
         android:textSize="22sp"
         android:gravity="center"
         android:padding="5dp"
@@ -16,12 +16,12 @@
         android:textColor="#ffffff"
         />
 
-    <FrameLayout
-        android:id="@+id/fl_basePager"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-    </FrameLayout>
-
+        android:text="设置"
+        android:textSize="22sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        />
 </LinearLayout>
