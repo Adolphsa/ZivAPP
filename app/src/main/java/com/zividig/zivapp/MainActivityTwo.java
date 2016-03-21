@@ -107,13 +107,13 @@ public class MainActivityTwo extends FragmentActivity {
                     break;
 
                 case R.id.rb_location: //车辆定位
-                    if (carLocationFragment == null){
+//                    if (carLocationFragment == null){
                         carLocationFragment = new CarLocation();
-                        transaction.add(R.id.framelayout, carLocationFragment);
-                    }else {
-                        carLocationFragment.onResume();
-                        transaction.show(carLocationFragment);
-                    }
+                        transaction.replace(R.id.framelayout, carLocationFragment);
+//                    }else {
+//                        carLocationFragment.onResume();
+//                        transaction.show(carLocationFragment);
+//                    }
                     break;
 
                 case R.id.rb_carLife: //车辆生活
