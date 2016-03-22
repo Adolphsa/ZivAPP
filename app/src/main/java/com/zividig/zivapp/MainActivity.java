@@ -1,153 +1,144 @@
-//package com.zividig.zivapp;
-//
-//import android.app.Activity;
-//import android.app.FragmentManager;
-//import android.app.FragmentTransaction;
-//import android.os.Bundle;
-//import android.support.v4.view.PagerAdapter;
-//import android.support.v4.view.ViewPager;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.RadioGroup;
-//
-//import com.baidu.mapapi.SDKInitializer;
-//import com.zividig.zivapp.customView.BaiduMapFragment;
-//import com.zividig.zivapp.tabs.BasePager;
-//import com.zividig.zivapp.tabs.CarInfo;
-//import com.zividig.zivapp.tabs.CarLife;
-//import com.zividig.zivapp.tabs.CarLocation;
-//import com.zividig.zivapp.tabs.RealTimeImage;
-//import com.zividig.zivapp.tabs.Setting;
-//
-//import java.util.ArrayList;
-//
-//public class MainActivity extends Activity {
-//
-//    private ViewPager viewPager;
-//    private RadioGroup radioGroup;
-//
-//    private  BaiduMapFragment baiduMapFragment;
-//    private MainActivity main;
-//
-//    private ArrayList<BasePager> viewPagerList;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        SDKInitializer.initialize(getApplicationContext());
-//        setContentView(R.layout.activity_main);
-//
-//        main = new MainActivity();
-//
-//        viewPager = (ViewPager) findViewById(R.id.vp_tabs);
-//        radioGroup = (RadioGroup) findViewById(R.id.rg_group);
-//
-//        initData();
-//    }
-//
-//    public void initData(){
-//
-//        radioGroup.check(R.id.rb_realTime); //默认勾选首页
-//
-//        viewPagerList = new ArrayList<BasePager>();
-//
-//        viewPagerList.add(new RealTimeImage(getApplication()));
-//        viewPagerList.add(new CarInfo(getApplication()));
-//        viewPagerList.add(new CarLocation(getApplication()));
-//        viewPagerList.add(new CarLife(getApplication()));
-//        viewPagerList.add(new Setting(getApplication()));
-//
-//        viewPager.setAdapter(new MyViewPageAdapter()); //为viewPager设置适配器
-//
-//        //监听radioGroup的点击事件
-//        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                switch(checkedId){
-//                    case R.id.rb_realTime:
-//                        viewPager.setCurrentItem(0, false);
-//                        viewPagerList.get(0).basePager_title.setText("实时预览");
-//                        break;
-//                    case R.id.rb_carInfo:
-//                        viewPager.setCurrentItem(1,false);
-//                        viewPagerList.get(1).basePager_title.setText("车辆信息");
-//                        break;
-//                    case R.id.rb_location:
-//                        viewPager.setCurrentItem(2, false);
-//                        viewPagerList.get(2).basePager_title.setText("车辆定位");
-////                        addMap();
-//                        break;
-//                    case R.id.rb_carLife:
-//                        viewPager.setCurrentItem(3,false);
-//                        viewPagerList.get(3).basePager_title.setText("行车生活");
-//                        break;
-//                    case R.id.rb_setting:
-//                        viewPager.setCurrentItem(4,false);
-//                        viewPagerList.get(4).basePager_title.setText("设置");
-//                        break;
-//                }
-//            }
-//        });
-//
-//        //监听viewPager状态的改变
-//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                viewPagerList.get(position).initData();//页面被选中的时候加载initData方法
-//                if (position == 2){
-//                    addMap();
-//                }
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
-//
-//        viewPagerList.get(0).initData(); //默认初始化首页数据
-//    }
-//
-//    class MyViewPageAdapter extends PagerAdapter{
-//
-//        @Override
-//        public int getCount() {
-//            return viewPagerList.size();
-//        }
-//
-//        @Override
-//        public boolean isViewFromObject(View view, Object object) {
-//            return view == object;
-//        }
-//
-//        @Override
-//        public Object instantiateItem(ViewGroup container, int position) {
-//            BasePager pager = viewPagerList.get(position);
-//            container.addView(pager.view);
-//
-//            return pager.view;
-//        }
-//
-//        @Override
-//        public void destroyItem(ViewGroup container, int position, Object object) {
-//            container.removeView((View)object);
-//        }
-//    }
-//
-//        public void addMap(){
-//
-//            System.out.println("方法执行了");
-//            FragmentManager fm = getFragmentManager();
-//            FragmentTransaction transaction = fm.beginTransaction();
-//
-//            transaction.add(R.id.fl_basePager, new BaiduMapFragment());
-//            transaction.commit();
-//        }
-//
-//
-//}
+package com.zividig.zivapp;
+
+import android.graphics.PixelFormat;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.widget.RadioGroup;
+
+import com.baidu.mapapi.SDKInitializer;
+import com.baidu.platform.comapi.map.C;
+import com.zividig.zivapp.fragment.CarInfo;
+import com.zividig.zivapp.fragment.CarLife;
+import com.zividig.zivapp.fragment.CarLocation;
+import com.zividig.zivapp.fragment.Setting;
+import com.zividig.zivapp.fragment.RealTime;
+
+/**
+ * Created by Administrator on 2016-03-18.
+ */
+public class MainActivity extends FragmentActivity {
+
+    private Fragment realTimeFragment;
+    private Fragment carInfoFragment;
+    private Fragment carLocationFragment;
+    private Fragment carLifeFragment;
+    private Fragment settingFragment;
+
+    private FragmentManager fragmentManager;
+    private RadioGroup radioGroup;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        SDKInitializer.initialize(getApplicationContext());
+        setContentView(R.layout.main);
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
+        fragmentManager = getSupportFragmentManager();
+
+        initView();
+    }
+
+    public void initView(){
+        radioGroup = (RadioGroup) findViewById(R.id.rg_group);
+
+        radioGroup.check(R.id.rb_realTime); //默认勾选首页
+        setDefaultFragment();
+
+        //设置radioButton的选中监听事件
+        radioGroup.setOnCheckedChangeListener(new RadioButtonListener());
+
+    }
+
+    //设置默认的Fragment
+    public void setDefaultFragment(){
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        realTimeFragment = new RealTime();
+        transaction.add(R.id.framelayout, realTimeFragment).commit();
+    }
+
+    //隐藏所有Fragment
+    public void hideFragment(FragmentTransaction transaction){
+        if (realTimeFragment != null){
+            transaction.hide(realTimeFragment);
+        }
+        if (carInfoFragment != null){
+            transaction.hide(carInfoFragment);
+        }
+        if (carLocationFragment != null){
+            transaction.hide(carLocationFragment);
+        }
+        if (carLifeFragment != null){
+            transaction.hide(carLifeFragment);
+        }
+        if (settingFragment != null){
+            transaction.hide(settingFragment);
+        }
+    }
+
+    class RadioButtonListener implements RadioGroup.OnCheckedChangeListener{
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            hideFragment(transaction);
+            switch (checkedId){
+                case R.id.rb_realTime: //实时预览
+                    if (realTimeFragment == null){
+                        realTimeFragment = new RealTime();
+                        transaction.add(R.id.framelayout, realTimeFragment);
+                    }else {
+                        onResume();
+                        transaction.show(realTimeFragment);
+                    }
+                    break;
+
+                case R.id.rb_carInfo: //车辆信息
+                    if (carInfoFragment == null){
+                        carInfoFragment = new CarInfo();
+                        transaction.add(R.id.framelayout, carInfoFragment);
+                    }else {
+                        onResume();
+                        transaction.show(carInfoFragment);
+                    }
+                    break;
+
+                case R.id.rb_location: //车辆定位
+//                    if (carLocationFragment == null){
+                        carLocationFragment = new CarLocation();
+                        transaction.replace(R.id.framelayout, carLocationFragment);
+//                    }else {
+//                        carLocationFragment.onResume();
+//                        transaction.show(carLocationFragment);
+//                    }
+                    break;
+
+                case R.id.rb_carLife: //车辆生活
+                    if (carLifeFragment == null){
+                        carLifeFragment = new CarLife();
+                        transaction.add(R.id.framelayout, carLifeFragment);
+                    }else {
+                        onResume();
+                        transaction.show(carLifeFragment);
+                    }
+
+                    break;
+
+                case R.id.rb_setting: //设置
+                    if (settingFragment == null){
+                        settingFragment = new Setting();
+                        transaction.add(R.id.framelayout, settingFragment);
+                    }else {
+                        onResume();
+                        transaction.show(settingFragment);
+                    }
+                    break;
+            }
+
+            transaction.commit();
+        }
+    }
+}
