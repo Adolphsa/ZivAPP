@@ -22,6 +22,9 @@
         <!-- 定位服务-->
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
 
+        <!-- 违章查询的服务-->
+        <service android:name="com.cheshouye.api.client.WeizhangIntentService"/>
+
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -33,4 +36,5 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 </manifest>

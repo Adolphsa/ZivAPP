@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
 import com.baidu.mapapi.SDKInitializer;
-import com.baidu.platform.comapi.map.C;
 import com.zividig.zivapp.fragment.CarInfo;
 import com.zividig.zivapp.fragment.CarLife;
 import com.zividig.zivapp.fragment.CarLocation;
@@ -21,11 +20,14 @@ import com.zividig.zivapp.fragment.RealTime;
  */
 public class MainActivity extends FragmentActivity {
 
+    private final static String FRAGMENT_Car_Life = "fragment_car_life";
+
     private Fragment realTimeFragment;
     private Fragment carInfoFragment;
     private Fragment carLocationFragment;
     private Fragment carLifeFragment;
     private Fragment settingFragment;
+    private Fragment violationQueryFragment;
 
     private FragmentManager fragmentManager;
     private RadioGroup radioGroup;
@@ -34,7 +36,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
-        setContentView(R.layout.main);
+        setContentView(R.layout.acticity_main);
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         fragmentManager = getSupportFragmentManager();
 
@@ -61,6 +63,9 @@ public class MainActivity extends FragmentActivity {
 
     //隐藏所有Fragment
     public void hideFragment(FragmentTransaction transaction){
+        //获取违章查询Fragment对象
+        violationQueryFragment = fragmentManager.findFragmentByTag(CarLife.FRAGMENT_Violation_query);
+
         if (realTimeFragment != null){
             transaction.hide(realTimeFragment);
         }
@@ -76,6 +81,10 @@ public class MainActivity extends FragmentActivity {
         if (settingFragment != null){
             transaction.hide(settingFragment);
         }
+        if (violationQueryFragment != null){
+            transaction.hide(violationQueryFragment);
+        }
+
     }
 
     class RadioButtonListener implements RadioGroup.OnCheckedChangeListener{
@@ -91,7 +100,6 @@ public class MainActivity extends FragmentActivity {
                         realTimeFragment = new RealTime();
                         transaction.add(R.id.framelayout, realTimeFragment);
                     }else {
-                        onResume();
                         transaction.show(realTimeFragment);
                     }
                     break;
@@ -101,27 +109,25 @@ public class MainActivity extends FragmentActivity {
                         carInfoFragment = new CarInfo();
                         transaction.add(R.id.framelayout, carInfoFragment);
                     }else {
-                        onResume();
                         transaction.show(carInfoFragment);
                     }
                     break;
 
                 case R.id.rb_location: //车辆定位
-//                    if (carLocationFragment == null){
+                    if (carLocationFragment == null){
                         carLocationFragment = new CarLocation();
-                        transaction.replace(R.id.framelayout, carLocationFragment);
-//                    }else {
-//                        carLocationFragment.onResume();
-//                        transaction.show(carLocationFragment);
-//                    }
+                        transaction.add(R.id.framelayout, carLocationFragment);
+                    }else {
+                        carLocationFragment.onResume();
+                        transaction.show(carLocationFragment);
+                    }
                     break;
 
                 case R.id.rb_carLife: //车辆生活
                     if (carLifeFragment == null){
                         carLifeFragment = new CarLife();
-                        transaction.add(R.id.framelayout, carLifeFragment);
+                        transaction.add(R.id.framelayout, carLifeFragment,FRAGMENT_Car_Life);
                     }else {
-                        onResume();
                         transaction.show(carLifeFragment);
                     }
 
@@ -132,7 +138,6 @@ public class MainActivity extends FragmentActivity {
                         settingFragment = new Setting();
                         transaction.add(R.id.framelayout, settingFragment);
                     }else {
-                        onResume();
                         transaction.show(settingFragment);
                     }
                     break;
@@ -140,5 +145,10 @@ public class MainActivity extends FragmentActivity {
 
             transaction.commit();
         }
+    }
+
+    public Fragment getCarLifeFragment(){
+        carLifeFragment = fragmentManager.findFragmentByTag(FRAGMENT_Car_Life);
+        return carLifeFragment;
     }
 }

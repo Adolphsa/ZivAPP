@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_car_life"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -14,12 +15,10 @@
         android:background="#00c8ff"
         android:textColor="#ffffff"
         />
-    <TextView
+    <Button
+        android:id="@+id/bt_car_life_query"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="车辆生活"
-        android:textSize="22sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
+        android:text="违章查询"
         />
 </LinearLayout>
