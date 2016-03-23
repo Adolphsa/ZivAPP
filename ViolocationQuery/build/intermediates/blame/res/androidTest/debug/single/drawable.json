@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_listitem_citys.xml",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_listitem_citys.xml"
+    },
+    {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_btn.xml",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_btn.xml"
+    },
+    {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_textbox.xml",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_textbox.xml"
+    },
+    {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_btn_light.xml",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_btn_light.xml"
+    },
+    {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_select.xml",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_select.xml"
+    },
+    {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_form_row.xml",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_form_row.xml"
+    },
+    {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_listitem_result.xml",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_listitem_result.xml"
+    },
+    {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_listitem_shortname.xml",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_listitem_shortname.xml"
+    },
+    {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_form.xml",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_form.xml"
+    }
+]

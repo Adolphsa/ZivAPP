@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.deahu.weizhang">
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true">
+        <activity
+            android:name="com.deahu.activity.MainActivity"
+            android:label="@string/app_name" >
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name="com.deahu.activity.ShortNameList" >
+        </activity>
+        <activity android:name="com.deahu.activity.ProvinceList" >
+        </activity>
+        <activity android:name="com.deahu.activity.CityList" >
+        </activity>
+        <activity android:name="com.deahu.activity.WeizhangResult" >
+        </activity>
+        <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+</manifest>
