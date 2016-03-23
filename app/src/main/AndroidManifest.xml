@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-
+        <activity android:name=".baidumap.GasStation"/>
         <!-- 定位服务-->
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
 

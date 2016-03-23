@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
@@ -67,6 +68,10 @@ public class CarLocation extends Fragment {
         mapView = (MapView) view.findViewById(R.id.map);
         mapView.showZoomControls(false);
 
+        //设置标题
+        TextView title = (TextView)view.findViewById(R.id.tv_title);
+        title.setText("车辆定位");
+
         initView();
         initLocation();
         initOrientation();
@@ -76,6 +81,7 @@ public class CarLocation extends Fragment {
 
     public void initView(){
         System.out.println("initView方法执行了");
+
         baiduMap = mapView.getMap();
 
     }

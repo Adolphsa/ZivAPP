@@ -14,13 +14,11 @@
  	    android:layout_height="fill_parent"
  	    android:layout_alignParentLeft="true"
  	    android:layout_centerVertical="true"
- 	    android:drawableLeft="@drawable/csy_arr_back"
+ 	    android:drawableLeft="@drawable/selector_back_button"
  	    android:drawablePadding="5.0dip"
  	    android:background="@android:color/transparent"
  	    android:gravity="center_vertical"
  	    android:textColor="@android:color/white"
- 	    android:textSize="14.0sp"
- 	    android:text="返回"
  	    android:visibility="gone" />
     
     <TextView

@@ -37,23 +37,26 @@ public final class R {
         public static int csy_title_ts=0x7f06000b;
     }
     public static final class drawable {
-        public static int csy_arr_back=0x7f020000;
-        public static int csy_arr_drop=0x7f020001;
-        public static int csy_arr_right=0x7f020002;
-        public static int csy_btn=0x7f020003;
-        public static int csy_btn_light=0x7f020004;
-        public static int csy_form=0x7f020005;
-        public static int csy_form_row=0x7f020006;
-        public static int csy_ic_launcher=0x7f020007;
-        public static int csy_ico_help=0x7f020008;
-        public static int csy_img_xsz=0x7f020009;
-        public static int csy_listitem_citys=0x7f02000a;
-        public static int csy_listitem_result=0x7f02000b;
-        public static int csy_listitem_shortname=0x7f02000c;
-        public static int csy_select=0x7f02000d;
-        public static int csy_textbox=0x7f02000e;
-        public static int csy_xsz=0x7f02000f;
-        public static int ic_launcher=0x7f020010;
+        public static int back=0x7f020000;
+        public static int back_slecter=0x7f020001;
+        public static int csy_arr_back=0x7f020002;
+        public static int csy_arr_drop=0x7f020003;
+        public static int csy_arr_right=0x7f020004;
+        public static int csy_btn=0x7f020005;
+        public static int csy_btn_light=0x7f020006;
+        public static int csy_form=0x7f020007;
+        public static int csy_form_row=0x7f020008;
+        public static int csy_ic_launcher=0x7f020009;
+        public static int csy_ico_help=0x7f02000a;
+        public static int csy_img_xsz=0x7f02000b;
+        public static int csy_listitem_citys=0x7f02000c;
+        public static int csy_listitem_result=0x7f02000d;
+        public static int csy_listitem_shortname=0x7f02000e;
+        public static int csy_select=0x7f02000f;
+        public static int csy_textbox=0x7f020010;
+        public static int csy_xsz=0x7f020011;
+        public static int ic_launcher=0x7f020012;
+        public static int selector_back_button=0x7f020013;
     }
     public static final class id {
         public static int btnBack=0x7f080022;

@@ -4,21 +4,20 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/tv_basePager_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="车辆生活"
-        android:textSize="22sp"
-        android:gravity="center"
-        android:padding="5dp"
-        android:background="#00c8ff"
-        android:textColor="#ffffff"
-        />
+
+    <include layout="@layout/layout_titlebar"/>
+
     <Button
         android:id="@+id/bt_car_life_query"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="违章查询"
+        />
+
+    <Button
+        android:id="@+id/bt_car_gas_station"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加油站"
         />
 </LinearLayout>

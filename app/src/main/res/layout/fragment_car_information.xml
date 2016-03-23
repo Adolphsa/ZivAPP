@@ -5,17 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_basePager_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="车辆信息"
-        android:textSize="22sp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:background="#00c8ff"
-        android:textColor="#ffffff"
-        />
+    <include layout="@layout/layout_titlebar"/>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.zividig.zivapp.R;
 
@@ -32,6 +33,10 @@ public class CarInfo extends Fragment {
         voltagePoint = (ImageView) view.findViewById(R.id.img_voltage_point);
         turnSpeedPoint = (ImageView) view.findViewById(R.id.img_turn_speed_point);
         temperaturePoint = (ImageView) view.findViewById(R.id.img_temperature_point);
+
+        //设置标题
+        TextView title = (TextView)view.findViewById(R.id.tv_title);
+        title.setText("车辆信息");
 
         initView();
         return view;

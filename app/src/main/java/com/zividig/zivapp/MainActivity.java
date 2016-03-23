@@ -147,12 +147,4 @@ public class MainActivity extends FragmentActivity {
             transaction.commit();
         }
     }
-
-
-    //开始违章查询
-    public void startViolationQuery(){
-        Intent weizhangIntent = new Intent();
-        weizhangIntent.setClass(getApplicationContext(), com.deahu.activity.MainActivity.class);
-        startActivity(weizhangIntent);
-    }
 }
