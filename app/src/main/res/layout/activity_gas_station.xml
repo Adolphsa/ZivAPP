@@ -6,4 +6,12 @@
 
     <include layout="@layout/layout_titlebar"/>
 
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/gad_map"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.baidu.mapapi.map.MapView>
+
 </LinearLayout>

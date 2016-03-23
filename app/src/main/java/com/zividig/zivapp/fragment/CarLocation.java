@@ -81,9 +81,7 @@ public class CarLocation extends Fragment {
 
     public void initView(){
         System.out.println("initView方法执行了");
-
         baiduMap = mapView.getMap();
-
     }
 
     //初始化定位数据

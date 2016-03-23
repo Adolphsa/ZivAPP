@@ -20,6 +20,10 @@
         "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_select.xml"
     },
     {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\selector_back_button.xml",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\selector_back_button.xml"
+    },
+    {
         "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_form_row.xml",
         "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_form_row.xml"
     },
