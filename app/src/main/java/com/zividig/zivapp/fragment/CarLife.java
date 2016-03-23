@@ -19,8 +19,6 @@ import com.zividig.zivapp.R;
  */
 public class CarLife extends Fragment {
 
-    public final static String FRAGMENT_Violation_query = "fragment_violation_query";
-
     private Button violationQuery;
 
     private FragmentManager fragmentManager;
@@ -40,12 +38,10 @@ public class CarLife extends Fragment {
         public void onClick(View v) {
             System.out.println("按钮被点击了");
 
-            fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.add(R.id.framelayout, new ViolationQuery(),FRAGMENT_Violation_query); //将违章查询布局显示在前台
+            //开启违章查询的类
             MainActivity main = (MainActivity) getActivity(); //获取Activity对象
-            transaction.hide(main.getCarLifeFragment()); //隐藏车生活布局文件
-            transaction.commit();
+            main.startViolationQuery();
+
         }
     }
 

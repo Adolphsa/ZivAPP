@@ -1,14 +1,17 @@
 package com.zividig.zivapp;
 
+import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.RadioGroup;
 
 import com.baidu.mapapi.SDKInitializer;
+import com.cheshouye.api.client.WeizhangIntentService;
 import com.zividig.zivapp.fragment.CarInfo;
 import com.zividig.zivapp.fragment.CarLife;
 import com.zividig.zivapp.fragment.CarLocation;
@@ -16,6 +19,7 @@ import com.zividig.zivapp.fragment.Setting;
 import com.zividig.zivapp.fragment.RealTime;
 
 /**
+ * 主页面
  * Created by Administrator on 2016-03-18.
  */
 public class MainActivity extends FragmentActivity {
@@ -27,10 +31,11 @@ public class MainActivity extends FragmentActivity {
     private Fragment carLocationFragment;
     private Fragment carLifeFragment;
     private Fragment settingFragment;
-    private Fragment violationQueryFragment;
+
 
     private FragmentManager fragmentManager;
     private RadioGroup radioGroup;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +68,6 @@ public class MainActivity extends FragmentActivity {
 
     //隐藏所有Fragment
     public void hideFragment(FragmentTransaction transaction){
-        //获取违章查询Fragment对象
-        violationQueryFragment = fragmentManager.findFragmentByTag(CarLife.FRAGMENT_Violation_query);
 
         if (realTimeFragment != null){
             transaction.hide(realTimeFragment);
@@ -81,9 +84,7 @@ public class MainActivity extends FragmentActivity {
         if (settingFragment != null){
             transaction.hide(settingFragment);
         }
-        if (violationQueryFragment != null){
-            transaction.hide(violationQueryFragment);
-        }
+
 
     }
 
@@ -147,8 +148,11 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    public Fragment getCarLifeFragment(){
-        carLifeFragment = fragmentManager.findFragmentByTag(FRAGMENT_Car_Life);
-        return carLifeFragment;
+
+    //开始违章查询
+    public void startViolationQuery(){
+        Intent weizhangIntent = new Intent();
+        weizhangIntent.setClass(getApplicationContext(), com.deahu.activity.MainActivity.class);
+        startActivity(weizhangIntent);
     }
 }

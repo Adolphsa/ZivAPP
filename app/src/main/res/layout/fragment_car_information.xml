@@ -12,7 +12,7 @@
         android:text="车辆信息"
         android:textSize="22sp"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="8dp"
         android:background="#00c8ff"
         android:textColor="#ffffff"
         />

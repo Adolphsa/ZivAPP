@@ -19,11 +19,10 @@
             </intent-filter>
         </activity>
 
+
         <!-- 定位服务-->
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
 
-        <!-- 违章查询的服务-->
-        <service android:name="com.cheshouye.api.client.WeizhangIntentService"/>
 
     </application>
 
