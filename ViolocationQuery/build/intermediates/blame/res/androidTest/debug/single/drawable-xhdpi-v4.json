@@ -28,15 +28,15 @@
         "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\csy_arr_right.png"
     },
     {
-        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\back.png",
-        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\back.png"
-    },
-    {
         "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\csy_xsz.png",
         "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\csy_xsz.png"
     },
     {
         "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\csy_ic_launcher.png",
         "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\csy_ic_launcher.png"
+    },
+    {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\back.png",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\back.png"
     }
 ]
