@@ -176,10 +176,13 @@ public class GasStation extends Activity {
                         baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
 
                         View view = View.inflate(getApplicationContext(),R.layout.popwindow,null);
-                        TextView text = (TextView) view.findViewById(R.id.tv_popwindow);
+                        TextView textName = (TextView) view.findViewById(R.id.tv_popwindow_name);
+                        TextView textAddress = (TextView) view.findViewById(R.id.tv_popwindow_address);
 
                         //设置要显示的信息
-                        text.setText(poiDetailResult.getName());
+                        textName.setText(poiDetailResult.getName());
+                        textAddress.setText(poiDetailResult.getAddress());
+
                         InfoWindow.OnInfoWindowClickListener listener = null;
                         listener = new InfoWindow.OnInfoWindowClickListener() {
                             @Override
@@ -189,7 +192,7 @@ public class GasStation extends Activity {
                             }
                         };
                         LatLng ll = marker.getPosition();
-                        InfoWindow mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(text), ll, -47, listener);
+                        InfoWindow mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(view), ll, -47, listener);
                         baiduMap.showInfoWindow(mInfoWindow);
                         return true;
                     }
