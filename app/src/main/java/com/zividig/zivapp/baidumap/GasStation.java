@@ -2,9 +2,16 @@ package com.zividig.zivapp.baidumap;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,18 +19,16 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.common.SysOSUtil;
 import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
-import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
-import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.baidu.mapapi.search.core.SearchResult;
@@ -35,6 +40,8 @@ import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
 import com.zividig.zivapp.R;
 import com.zividig.zivapp.overlayutil.PoiOverlay;
+
+import java.util.zip.Inflater;
 
 /**
  * 加油站检索
@@ -52,6 +59,7 @@ public class GasStation extends Activity {
     private PoiSearch poiSearch;
     private Marker marker;
     PoiOverlay overlay;
+    private LinearLayout llMapInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +79,9 @@ public class GasStation extends Activity {
                 finish();
             }
         });
+
+        llMapInfo = (LinearLayout) findViewById(R.id.ll_map_info); //地图信息布局文件
+
 
         mapView = (MapView) findViewById(R.id.gad_map);
         mapView.showZoomControls(false);
@@ -156,7 +167,7 @@ public class GasStation extends Activity {
         }
 
         @Override
-        public void onGetPoiDetailResult(final PoiDetailResult poiDetailResult) {
+        public void onGetPoiDetailResult(final PoiDetailResult poiDetailResult) { //POI详情结果
             //获取Place详情页检索结果
             if (poiDetailResult.error != SearchResult.ERRORNO.NO_ERROR) {
                 Toast.makeText(getApplicationContext(), "抱歉，未找到结果",
@@ -166,8 +177,6 @@ public class GasStation extends Activity {
                 baiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
                     @Override
                     public boolean onMarkerClick(Marker marker) {
-
-
                         System.out.println("Marker被点击了");
 
                         //移到中心点
@@ -175,25 +184,36 @@ public class GasStation extends Activity {
                         builder.target(marker.getPosition());
                         baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
 
-                        View view = View.inflate(getApplicationContext(),R.layout.popwindow,null);
+                        //获取InfoWindow的布局文件
+                        View view = View.inflate(getApplicationContext(),R.layout.layput_infowindow,null);
                         TextView textName = (TextView) view.findViewById(R.id.tv_popwindow_name);
                         TextView textAddress = (TextView) view.findViewById(R.id.tv_popwindow_address);
 
                         //设置要显示的信息
-                        textName.setText(poiDetailResult.getName());
-                        textAddress.setText(poiDetailResult.getAddress());
+                        textName.setText(poiDetailResult.getName()); //名称
+                        textAddress.setText(poiDetailResult.getAddress()); //地址
 
+                        //InfoWindow的点击事件监听
                         InfoWindow.OnInfoWindowClickListener listener = null;
                         listener = new InfoWindow.OnInfoWindowClickListener() {
                             @Override
                             public void onInfoWindowClick() {
                                 System.out.println("InfoWinsow被点击");
-                                baiduMap.hideInfoWindow();
+                                baiduMap.hideInfoWindow(); //隐藏InfoWindow
                             }
                         };
                         LatLng ll = marker.getPosition();
                         InfoWindow mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(view), ll, -47, listener);
                         baiduMap.showInfoWindow(mInfoWindow);
+
+//                        AlphaAnimation alpha = new AlphaAnimation(0,1); //0是完全透明
+//                        alpha.setDuration(1000);
+//                        alpha.setFillAfter(true);
+//                        if (llMapInfo.isShown()){
+//                            llMapInfo.setVisibility(View.INVISIBLE);
+//                        }
+//                        llMapInfo.setVisibility(View.VISIBLE);
+//                        llMapInfo.setAnimation(alpha);
                         return true;
                     }
                 });
@@ -202,6 +222,41 @@ public class GasStation extends Activity {
         }
     };
 
+//    public void initPopWindow(){
+//        View popView = View.inflate(getApplicationContext(),R.layout.layout_popwindow,null);
+//        PopupWindow popupWindow = new PopupWindow(popView, WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+//        popupWindow.setFocusable(true);
+////        popupWindow.setOutsideTouchable(false); //点击外面的区域不关系
+//
+//        // 实例化一个ColorDrawable颜色为半透明
+//        ColorDrawable dw = new ColorDrawable(Color.GRAY);
+//        popupWindow.setBackgroundDrawable(dw);
+//
+//        TextView textView = (TextView) popView.findViewById(R.id.popwindow_tv_title);
+//        textView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                System.out.println("popWindow中的文本被点击了");
+//            }
+//        });
+//
+//        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+//            @Override
+//            public void onDismiss() {
+//                System.out.println("popWindow消失");
+//            }
+//        });
+//
+//        popupWindow.setTouchInterceptor(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                return false; //点击外部区域不消失
+//            }
+//        });
+//
+//        //在底部显示
+//        popupWindow.showAtLocation(GasStation.this.findViewById(R.id.tv_title), Gravity.BOTTOM, 0, 0);
+//    }
 
     //继承POI工具类中的PoiOverlay
     class MyPoiOverlay extends PoiOverlay {
@@ -219,6 +274,9 @@ public class GasStation extends Activity {
         }
     }
 
+    /**
+     * 定位回调监听类
+     */
     class MyLocationListener implements BDLocationListener{
 
         @Override
@@ -249,7 +307,6 @@ public class GasStation extends Activity {
                 MapStatus.Builder builder = new MapStatus.Builder();
                 builder.target(ll).zoom(18.0f);
                 baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-                Toast.makeText(getApplicationContext(), bdLocation.getAddrStr(), Toast.LENGTH_SHORT).show();
             }
 
             //发起附近检索

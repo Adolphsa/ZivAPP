@@ -6,12 +6,33 @@
 
     <include layout="@layout/layout_titlebar"/>
 
-    <com.baidu.mapapi.map.MapView
-        android:id="@+id/gad_map"
+    <RelativeLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/gad_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.baidu.mapapi.map.MapView>
 
-    </com.baidu.mapapi.map.MapView>
-
+        <LinearLayout
+            android:id="@+id/ll_map_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white"
+            android:visibility="gone"
+            android:animateLayoutChanges="true"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="测试好"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                />
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>
