@@ -46,8 +46,10 @@ public class CarLocation extends Fragment {
     public float mCurrentAccuracy; //精度
     private LatLng ll;
 
+
     private boolean isFirstLocation = true;
 
+    private MyLocationConfiguration.LocationMode mLocationMode;
     public LocationClient mLocationClient;
     public BDLocationListener myListener;
 
@@ -88,6 +90,7 @@ public class CarLocation extends Fragment {
     public void initLocation(){
         System.out.println("initLocation方法执行了");
 
+        mLocationMode = MyLocationConfiguration.LocationMode.NORMAL;
         baiduMap.setMyLocationEnabled(true);
         //声明LocationClient类
         mLocationClient = new LocationClient(getActivity().getApplicationContext());
