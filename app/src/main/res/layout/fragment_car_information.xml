@@ -85,6 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/real_time_condition_speed_indicator_v"
+            android:rotation="-110"
             />
         <ImageView
             style="@style/CarInfoImgStyle"
@@ -132,7 +133,6 @@
                     style="@style/CarInfoImgStyle"
                     android:id="@+id/img_voltage_point"
                     android:src="@mipmap/temperature_point_v"
-
                     />
             </RelativeLayout>
             <TextView
@@ -141,7 +141,7 @@
                 />
             <TextView
                 style="@style/CarInfoTextStyle"
-                android:text="27.80V"
+                android:text="12.00V"
                 android:textColor="#FFFF8D"
 
                 />
@@ -168,6 +168,7 @@
                     style="@style/CarInfoImgStyle"
                     android:id="@+id/img_turn_speed_point"
                     android:src="@mipmap/turn_speed_point"
+                    android:rotation="-130"
                     />
             </RelativeLayout>
             <TextView
@@ -206,7 +207,6 @@
                     style="@style/CarInfoImgStyle"
                     android:id="@+id/img_temperature_point"
                     android:src="@mipmap/temperature_point_v"
-
                     />
             </RelativeLayout>
 

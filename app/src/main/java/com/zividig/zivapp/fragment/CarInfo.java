@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.zividig.zivapp.R;
 
+import java.security.Principal;
+
 /**
  * 车辆信息
  * Created by Administrator on 2016-03-18.
@@ -23,6 +25,10 @@ public class CarInfo extends Fragment {
     private  ImageView voltagePoint;
     private  ImageView turnSpeedPoint;
     private  ImageView temperaturePoint;
+    private RotateAnimation speedRotate; //速度动画
+    private int [] speedTest = {10,50,100,80,120,60,30,10,50};
+    private int i;
+    private int xStart,xEnd;
 
     @Nullable
     @Override
@@ -51,10 +57,12 @@ public class CarInfo extends Fragment {
 
         System.out.println("动画被调用");
         //速度动画
-        RotateAnimation speedRotate = new RotateAnimation(0,-110, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
-        speedRotate.setDuration(500);
-        speedRotate.setFillAfter(true);
+        speedRotate = new RotateAnimation(0,110, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+        speedRotate.setDuration(1000);
+        speedRotate.setFillAfter(false);
+        speedRotate.setRepeatCount(Animation.INFINITE);
         speedPoint.setAnimation(speedRotate);
+
 
         //电压动画
         RotateAnimation voltageRotate = new RotateAnimation(0,65, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.8f);
@@ -62,11 +70,11 @@ public class CarInfo extends Fragment {
         voltageRotate.setFillAfter(true);
         voltagePoint.setAnimation(voltageRotate);
 
-        //转速动画
-        RotateAnimation turnRotate = new RotateAnimation(0,-130, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
-        turnRotate.setDuration(500);
-        turnRotate.setFillAfter(true);
-        turnSpeedPoint.setAnimation(turnRotate);
+//        //转速动画
+//        RotateAnimation turnRotate = new RotateAnimation(0,-130, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+//        turnRotate.setDuration(500);
+//        turnRotate.setFillAfter(true);
+//        turnSpeedPoint.setAnimation(turnRotate);
 
         //水温动画
         RotateAnimation temperatureRotate = new RotateAnimation(0,-70, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.8f);
@@ -75,8 +83,18 @@ public class CarInfo extends Fragment {
         temperaturePoint.setAnimation(temperatureRotate);
     }
 
-    public void onHiddenChanged(boolean hidden){
-        System.out.println("方法被调用");
-        initAnimation();
+//    public void onHiddenChanged(boolean hidden){
+//        System.out.println("方法被调用");
+//        initAnimation();
+//    }
+
+    public void speedAnimation(int xStart,int xEnd){
+        speedRotate = new RotateAnimation(xStart,xEnd, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+        speedRotate.setDuration(500);
+        speedRotate.setFillAfter(true);
+        speedPoint.setAnimation(speedRotate);
+        xStart = xEnd;
+        xEnd = speedTest[i];
+        i++;
     }
 }

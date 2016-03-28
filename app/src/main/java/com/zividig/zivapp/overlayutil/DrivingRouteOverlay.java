@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class DrivingRouteOverlay extends OverlayManager {
 
-    private DrivingRouteLine mRouteLine = null;
+    private DrivingRouteLine route = null;
     boolean focus = false;
 
     /**
@@ -40,18 +40,18 @@ public class DrivingRouteOverlay extends OverlayManager {
 
     @Override
     public final List<OverlayOptions> getOverlayOptions() {
-        if (mRouteLine == null) {
+        if (route == null) {
             return null;
         }
 
         List<OverlayOptions> overlayOptionses = new ArrayList<OverlayOptions>();
         // step node
-        if (mRouteLine.getAllStep() != null
-                && mRouteLine.getAllStep().size() > 0) {
+        if (route.getAllStep() != null
+                && route.getAllStep().size() > 0) {
             
-            for (DrivingStep step : mRouteLine.getAllStep()) {
+            for (DrivingStep step : route.getAllStep()) {
                 Bundle b = new Bundle();
-                b.putInt("index", mRouteLine.getAllStep().indexOf(step));
+                b.putInt("index", route.getAllStep().indexOf(step));
                 if (step.getEntrance() != null) {
                     overlayOptionses.add((new MarkerOptions())
                             .position(step.getEntrance().getLocation())
@@ -63,7 +63,7 @@ public class DrivingRouteOverlay extends OverlayManager {
                                                                             .fromAssetWithDpi("Icon_line_node.png")));
                 }
                 // 最后路段绘制出口点
-                if (mRouteLine.getAllStep().indexOf(step) == (mRouteLine
+                if (route.getAllStep().indexOf(step) == (route
                         .getAllStep().size() - 1) && step.getExit() != null) {
                     overlayOptionses.add((new MarkerOptions())
                             .position(step.getExit().getLocation())
@@ -76,27 +76,27 @@ public class DrivingRouteOverlay extends OverlayManager {
             }
         }
 
-        if (mRouteLine.getStarting() != null) {
+        if (route.getStarting() != null) {
             overlayOptionses.add((new MarkerOptions())
-                    .position(mRouteLine.getStarting().getLocation())
+                    .position(route.getStarting().getLocation())
                             .icon(getStartMarker() != null ? getStartMarker() :
                                     BitmapDescriptorFactory
                                             .fromAssetWithDpi("Icon_start.png")).zIndex(10));
         }
-        if (mRouteLine.getTerminal() != null) {
+        if (route.getTerminal() != null) {
             overlayOptionses
                     .add((new MarkerOptions())
-                            .position(mRouteLine.getTerminal().getLocation())
+                            .position(route.getTerminal().getLocation())
                                     .icon(getTerminalMarker() != null ? getTerminalMarker() :
                                             BitmapDescriptorFactory
                                                     .fromAssetWithDpi("Icon_end.png"))
                                                             .zIndex(10));
         }
         // poly line
-        if (mRouteLine.getAllStep() != null
-                && mRouteLine.getAllStep().size() > 0) {
+        if (route.getAllStep() != null
+                && route.getAllStep().size() > 0) {
         
-            List<DrivingStep> steps = mRouteLine.getAllStep();
+            List<DrivingStep> steps = route.getAllStep();
             int stepNum = steps.size();
             
             
@@ -151,7 +151,7 @@ public class DrivingRouteOverlay extends OverlayManager {
      *            路线数据
      */
     public void setData(DrivingRouteLine routeLine) {
-        this.mRouteLine = routeLine;
+        this.route = routeLine;
     }
 
     /**
@@ -196,8 +196,8 @@ public class DrivingRouteOverlay extends OverlayManager {
      * @return 是否处理了该点击事件
      */
     public boolean onRouteNodeClick(int i) {
-        if (mRouteLine.getAllStep() != null
-                && mRouteLine.getAllStep().get(i) != null) {
+        if (route.getAllStep() != null
+                && route.getAllStep().get(i) != null) {
             Log.i("baidumapsdk", "DrivingRouteOverlay onRouteNodeClick");
         }
         return false;
