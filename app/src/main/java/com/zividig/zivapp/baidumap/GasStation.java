@@ -15,6 +15,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.InfoWindow;
+import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
@@ -163,45 +164,17 @@ public class GasStation extends Activity {
                 Toast.makeText(getApplicationContext(), "抱歉，未找到结果",
                         Toast.LENGTH_SHORT).show();
             } else {// 正常返回结果的时候，此处可以获得很多相关信息
-
-                baiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+                baiduMap.setOnMapClickListener(new BaiduMap.OnMapClickListener() {
                     @Override
-                    public boolean onMarkerClick(Marker marker) {
-                        System.out.println("Marker被点击了");
+                    public void onMapClick(LatLng latLng) {
+                        System.out.println("地图被点击了");
+                        baiduMap.hideInfoWindow(); //隐藏infoWindow
+                    }
 
-                        //移到中心点
-                        MapStatus.Builder builder = new MapStatus.Builder();
-                        builder.target(marker.getPosition());
-                        baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-
-                        //获取InfoWindow的布局文件
-                        View view = View.inflate(getApplicationContext(),R.layout.layput_infowindow,null);
-                        TextView textName = (TextView) view.findViewById(R.id.tv_popwindow_name);
-                        TextView textAddress = (TextView) view.findViewById(R.id.tv_popwindow_address);
-                        Button goThereBtn = (Button) view.findViewById(R.id.btn_go_there);
-
-                        //设置要显示的信息
-                        textName.setText(poiDetailResult.getName()); //名称
-                        textAddress.setText(poiDetailResult.getAddress()); //地址
-                        endAdd = marker.getPosition();
-                        //按钮的监听事件
-                        goThereBtn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                System.out.println("到哪去按钮被点击了");
-                                Intent intent = new Intent();
-                                intent.setClass(getApplicationContext(),CarRoutePlan.class);
-                                startActivity(intent);
-                                baiduMap.hideInfoWindow(); //隐藏InfoWindow
-                            }
-                        });
-
-                        LatLng ll = marker.getPosition();
-                        InfoWindow mInfoWindow = new InfoWindow(view, ll, -47);
-                        baiduMap.showInfoWindow(mInfoWindow);
-
-
-                        return true;
+                    @Override
+                    public boolean onMapPoiClick(MapPoi mapPoi) {
+                        System.out.println("地图上的POI被点击了");
+                        return false;
                     }
                 });
 
@@ -219,9 +192,43 @@ public class GasStation extends Activity {
         public boolean onPoiClick(int i) { //可以点击
             System.out.println("POI被点击了" + i);
             super.onPoiClick(i);
-            PoiInfo poiInfo = getPoiResult().getAllPoi().get(i);
+            PoiInfo poiInfo = getPoiResult().getAllPoi().get(i); //Poi信息
             poiSearch.searchPoiDetail(new PoiDetailSearchOption()
                     .poiUid(poiInfo.uid));
+
+            //当前点的位置
+            LatLng currentPointLocation = poiInfo.location;
+
+            //移到中心点
+            MapStatus.Builder builder = new MapStatus.Builder();
+            builder.target(currentPointLocation);
+            baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+
+            //获取InfoWindow的布局文件
+            View view = View.inflate(getApplicationContext(),R.layout.layput_infowindow,null);
+            TextView textName = (TextView) view.findViewById(R.id.tv_popwindow_name);
+            TextView textAddress = (TextView) view.findViewById(R.id.tv_popwindow_address);
+            Button goThereBtn = (Button) view.findViewById(R.id.btn_go_there);
+
+            //设置要显示的信息
+            textName.setText(poiInfo.name); //名称
+            textAddress.setText(poiInfo.address); //地址
+            endAdd = currentPointLocation;
+            //按钮的监听事件
+            goThereBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println("到哪去按钮被点击了");
+                    Intent intent = new Intent();
+                    intent.setClass(getApplicationContext(),CarRoutePlan.class);
+                    startActivity(intent);
+                    baiduMap.hideInfoWindow(); //隐藏InfoWindow
+                }
+            });
+
+            LatLng ll = currentPointLocation;
+            InfoWindow mInfoWindow = new InfoWindow(view, ll, -47);
+            baiduMap.showInfoWindow(mInfoWindow);
             return true;
         }
     }
