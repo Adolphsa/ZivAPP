@@ -78,6 +78,8 @@ public class GasStation extends Activity {
 
         llMapInfo = (LinearLayout) findViewById(R.id.ll_map_info); //地图信息布局文件
 
+        poiSearch = PoiSearch.newInstance(); //生成检索对象
+        poiSearch.setOnGetPoiSearchResultListener(poiSearchListener);
 
         mapView = (MapView) findViewById(R.id.gad_map);
         mapView.showZoomControls(false);
@@ -114,8 +116,7 @@ public class GasStation extends Activity {
     //发起附近检索
     public void nearSearch(LatLng ll){
 
-        poiSearch = PoiSearch.newInstance(); //生成检索对象
-        poiSearch.setOnGetPoiSearchResultListener(poiSearchListener);
+
 
         //发起附近检索
         PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption();
@@ -220,7 +221,7 @@ public class GasStation extends Activity {
                 public void onClick(View v) {
                     System.out.println("到哪去按钮被点击了");
                     Intent intent = new Intent();
-                    intent.setClass(getApplicationContext(),CarRoutePlan.class);
+                    intent.setClass(getApplicationContext(),LookRoute.class);
                     startActivity(intent);
                     baiduMap.hideInfoWindow(); //隐藏InfoWindow
                 }
@@ -252,7 +253,7 @@ public class GasStation extends Activity {
                     .build();
             baiduMap.setMyLocationData(locationData);
 
-            System.out.println(bdLocation.getLatitude());
+            System.out.println(bdLocation.getLatitude() + "---" + "定位监听");
 
             //设置标注
             MyLocationConfiguration config = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL,true,null);
