@@ -5,7 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/layout_titlebar"/>
+    <RelativeLayout
+        android:background="#00c8ff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="46dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/selector_back_button"
+            android:background="@null"
+            android:layout_marginLeft="5dp"
+            android:visibility="visible"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            />
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -24,6 +49,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tv_my_location"
                 style="@style/LookRoute"
                 android:text="我的位置"
                 android:drawableRight="@mipmap/select_my_loc_icon"
@@ -37,6 +63,7 @@
                 android:background="#dddddd"
                 />
             <TextView
+                android:id="@+id/tv_destination"
                 style="@style/LookRoute"
                 android:text="要到达的位置"
 

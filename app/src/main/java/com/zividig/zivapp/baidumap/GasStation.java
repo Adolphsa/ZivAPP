@@ -55,6 +55,8 @@ public class GasStation extends Activity {
     //需要传递给CarRoutePlan的一些值
     public static LatLng startAdd;
     public static LatLng endAdd;
+    public static String destination;
+    public static String city;
 
 
     @Override
@@ -116,9 +118,6 @@ public class GasStation extends Activity {
     //发起附近检索
     public void nearSearch(LatLng ll){
 
-
-
-        //发起附近检索
         PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption();
         System.out.println(ll);
         nearbySearchOption.location(ll);
@@ -214,6 +213,7 @@ public class GasStation extends Activity {
             //设置要显示的信息
             textName.setText(poiInfo.name); //名称
             textAddress.setText(poiInfo.address); //地址
+            destination = poiInfo.address;
             endAdd = currentPointLocation;
             //按钮的监听事件
             goThereBtn.setOnClickListener(new View.OnClickListener() {
@@ -264,7 +264,8 @@ public class GasStation extends Activity {
                 System.out.println("第一次定位");
                 isFirstLocation = false;
                 ll = new LatLng(bdLocation.getLatitude(),bdLocation.getLongitude());
-                startAdd = ll;
+                startAdd = ll; //获取当前的经纬度
+                city = bdLocation.getCity(); //获取当前城市
                 MapStatus.Builder builder = new MapStatus.Builder();
                 builder.target(ll).zoom(18.0f);
                 baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
