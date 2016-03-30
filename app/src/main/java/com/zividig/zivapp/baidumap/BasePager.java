@@ -24,7 +24,7 @@ public class BasePager{
     private TextView tvDescribe;
     private TextView tvDistance;
     private int currentI;
-    private Button mapNavigation;
+    private Button mapNavigation; //调用第三方地图
 
     public BasePager(Context context){
         mContext = context;
