@@ -93,7 +93,7 @@ public class CarLocation extends Fragment {
         mLocationMode = MyLocationConfiguration.LocationMode.NORMAL;
         baiduMap.setMyLocationEnabled(true);
         //声明LocationClient类
-        mLocationClient = new LocationClient(getActivity().getApplicationContext());
+        mLocationClient = new LocationClient(getContext());
         //注册监听函数
         myListener = new MyLocationListener();
         mLocationClient.registerLocationListener(myListener);
@@ -102,7 +102,7 @@ public class CarLocation extends Fragment {
         option.setOpenGps(true); // 打开gps
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);//高精度
         option.setCoorType("bd09ll");//可选，默认gcj02，设置返回的定位结果坐标系
-        option.setScanSpan(1000);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
+        option.setScanSpan(0);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
         option.setIsNeedAddress(true); //需要位置信息
         option.setNeedDeviceDirect(true);//返回的定位结果包含手机机头的方向
         mLocationClient.setLocOption(option);
@@ -112,7 +112,7 @@ public class CarLocation extends Fragment {
     //初始化方向传感器
     public void initOrientation(){
         mMyOrientationListener = new MyOrientationListener(
-                getActivity().getApplicationContext());
+                getContext());
         mMyOrientationListener
                 .setOnOrientationListener(new MyOrientationListener.OnOrientationListener()
                 {
