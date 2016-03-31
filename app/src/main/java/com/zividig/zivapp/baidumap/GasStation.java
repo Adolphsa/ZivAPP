@@ -48,7 +48,6 @@ public class GasStation extends Activity {
     private LatLng ll;
     private boolean isFirstLocation = true;
     private PoiSearch poiSearch;
-    private Marker marker;
     PoiOverlay overlay;
     private LinearLayout llMapInfo;
 
@@ -57,6 +56,7 @@ public class GasStation extends Activity {
     public static LatLng endAdd;
     public static String destination;
     public static String city;
+    private TextView txtTitle;
 
 
     @Override
@@ -65,8 +65,8 @@ public class GasStation extends Activity {
         setContentView(R.layout.activity_gas_station);
 
         // 标题
-        TextView txtTitle = (TextView) findViewById(R.id.tv_title);
-        txtTitle.setText("加油站");
+        txtTitle = (TextView) findViewById(R.id.tv_title);
+
 
         //返回按钮
         Button btnBack = (Button) findViewById(R.id.btn_back);
@@ -107,7 +107,7 @@ public class GasStation extends Activity {
         option.setOpenGps(true); // 打开gps
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);//高精度
         option.setCoorType("bd09ll");//可选，默认gcj02，设置返回的定位结果坐标系
-        option.setScanSpan(0);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
+        option.setScanSpan(0);//可选，默认0，即仅定位一次
         option.setIsNeedAddress(true); //需要位置信息
         option.setNeedDeviceDirect(true);//返回的定位结果包含手机机头的方向
         mLocationClient.setLocOption(option);
@@ -116,12 +116,12 @@ public class GasStation extends Activity {
     }
 
     //发起附近检索
-    public void nearSearch(LatLng ll){
+    public void nearSearch(LatLng ll,String city){
 
         PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption();
         System.out.println(ll);
         nearbySearchOption.location(ll);
-        nearbySearchOption.keyword("加油站");
+        nearbySearchOption.keyword(city);
         nearbySearchOption.radius(5000);// 检索半径，单位是米
         nearbySearchOption.pageCapacity(10);
         nearbySearchOption.pageNum(1);
@@ -275,7 +275,33 @@ public class GasStation extends Activity {
             //发起附近检索
             if (ll != null){
                 System.out.println("执行检索");
-                nearSearch(ll);
+                Intent intent = getIntent();
+                Bundle bundle = intent.getExtras();
+                int key = bundle.getInt("service");
+                System.out.println(key);
+
+                switch (key){
+                    case 0:
+                        nearSearch(ll,"加油站");
+                        txtTitle.setText("加油站");
+                        break;
+                    case 1:
+                        nearSearch(ll,"银行");
+                        txtTitle.setText("银行");
+                        break;
+                    case 2:
+                        nearSearch(ll,"酒店");
+                        txtTitle.setText("酒店");
+                        break;
+                    case 3:
+                        nearSearch(ll,"停车场");
+                        txtTitle.setText("停车场");
+                        break;
+                }
+
+
+
+
             }
 
 

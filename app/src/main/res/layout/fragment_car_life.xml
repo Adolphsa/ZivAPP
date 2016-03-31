@@ -7,17 +7,84 @@
 
     <include layout="@layout/layout_titlebar"/>
 
-    <Button
-        android:id="@+id/bt_car_life_query"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="违章查询"
-        />
 
-    <Button
-        android:id="@+id/bt_car_gas_station"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:background="@drawable/shape_service_bg"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/shape_service_bg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:background="@drawable/shape_service_font_ng"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="车辆服务"
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/bt_car_life_query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="违章查询"
+            android:drawableBottom="@mipmap/weizhangchaxun"
+            android:background="@drawable/selector_car_life_button_bg"
+            android:padding="10dp"
+            android:gravity="left"
+            android:textColor="#00c8ff"
+            />
+    </LinearLayout>
+
+
+    <include layout="@layout/layout_service"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="加油站"
-        />
+        android:orientation="horizontal"
+        >
+        <Button
+            style="@style/carLifeButtonStyle"
+            android:id="@+id/bt_car_gas_station"
+            android:text="加油站"
+            android:drawableBottom="@mipmap/gas_station_icon"
+            />
+
+        <Button
+            style="@style/carLifeButtonStyle"
+            android:id="@+id/bt_bank"
+            android:layout_width="wrap_content"
+            android:text="银行"
+            android:drawableBottom="@mipmap/bank_icon"
+            />
+        <Button
+            style="@style/carLifeButtonStyle"
+            android:id="@+id/bt_hotel"
+            android:text="酒店"
+            android:drawableBottom="@mipmap/hotel_icon"
+            />
+        <Button
+            style="@style/carLifeButtonStyle"
+            android:id="@+id/bt_parking"
+            android:text="停车场"
+            android:drawableBottom="@mipmap/parking_icon"
+            />
+    </LinearLayout>
+
+
 </LinearLayout>

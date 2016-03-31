@@ -55,8 +55,8 @@ public class LookRoute extends Activity {
             }
         });
 
-        myLocation = (TextView) findViewById(R.id.tv_my_location);
-        destination = (TextView) findViewById(R.id.tv_destination);
+        myLocation = (TextView) findViewById(R.id.tv_my_location); //我的位置
+        destination = (TextView) findViewById(R.id.tv_destination); //目的地
         if (GasStation.destination != null){
             destination.setText(GasStation.destination);
         }
@@ -72,7 +72,7 @@ public class LookRoute extends Activity {
         arrayList = new ArrayList<BasePager>();
 
         for (int i=0; i<3; i++){
-            BasePager basePager = new BasePager(getApplicationContext());
+            BasePager basePager = new BasePager(LookRoute.this);
             arrayList.add(basePager);
         }
 

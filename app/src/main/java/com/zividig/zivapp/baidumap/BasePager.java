@@ -34,9 +34,9 @@ public class BasePager{
     //初始化界面
     public  View initView(){
         View view = View.inflate(mContext, R.layout.activity_base_pager, null);
-        tvDescribe = (TextView) view.findViewById(R.id.tv_describe);
-        tvDistance = (TextView) view.findViewById(R.id.tv_distance);
-        mapNavigation = (Button) view.findViewById(R.id.bt_map_navigation);
+        tvDescribe = (TextView) view.findViewById(R.id.tv_describe); //描述
+        tvDistance = (TextView) view.findViewById(R.id.tv_distance); //距离
+        mapNavigation = (Button) view.findViewById(R.id.bt_map_navigation); //调用第三方地图
 
         RelativeLayout rlBasePager = (RelativeLayout) view.findViewById(R.id.rl_base_pager);
         rlBasePager.setOnClickListener(new View.OnClickListener() {
@@ -46,13 +46,13 @@ public class BasePager{
                 Bundle bundle = new Bundle();
                 switch (currentI) {
                     case 0:
-                        bundle.putInt("drive", 0);
+                        bundle.putInt("drive", 0); //驾车导航
                         break;
                     case 1:
-                        bundle.putInt("drive", 1);
+                        bundle.putInt("drive", 1); //公交导航
                         break;
                     case 2:
-                        bundle.putInt("drive", 2);
+                        bundle.putInt("drive", 2); //步行导航
                         break;
                 }
                 Intent intent = new Intent();
@@ -77,18 +77,19 @@ public class BasePager{
     public void initData(int i){
         currentI = i;
         double distance = DistanceUtil.getDistance(GasStation.startAdd, GasStation.endAdd);
-        DecimalFormat df = new DecimalFormat("###.00"); //只保留小数点后一位
+        System.out.println(distance + "距离");
+        DecimalFormat df = new DecimalFormat("0.00"); //只保留小数点后一位
         switch (i){
             case 0:
 
                 tvDescribe.setText("驾车路线");
-                tvDistance.setText( df.format(distance/1000.0) + "公里");
-
+                tvDistance.setText( df.format(distance/1000) + "公里");
+                System.out.println(df.format(distance/1000));
                 break;
             case 1:
 
                 tvDescribe.setText("公交路线");
-                tvDistance.setText( df.format(distance/1000.0) + "公里");
+                tvDistance.setText( df.format(distance/1000) + "公里");
                 break;
             case 2:
 

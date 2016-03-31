@@ -103,7 +103,7 @@ public class CarRoutePlan extends Activity implements OnGetRoutePlanResultListen
     @Override
     public void onGetWalkingRouteResult(WalkingRouteResult walkingRouteResult) { //步行路线规划
         if (walkingRouteResult == null || walkingRouteResult.error != SearchResult.ERRORNO.NO_ERROR) {
-            Toast.makeText(getApplicationContext(), "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CarRoutePlan.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
         }
         if (walkingRouteResult.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
             // 起终点或途经点地址有岐义，通过以下接口获取建议查询信息
@@ -127,7 +127,7 @@ public class CarRoutePlan extends Activity implements OnGetRoutePlanResultListen
     public void onGetTransitRouteResult(TransitRouteResult transitRouteResult) { //公交路线规划
 
         if (transitRouteResult == null || transitRouteResult.error != SearchResult.ERRORNO.NO_ERROR) {
-            Toast.makeText(getApplicationContext(), "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CarRoutePlan.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
         }
         if (transitRouteResult.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
             // 起终点或途经点地址有岐义，通过以下接口获取建议查询信息
@@ -149,7 +149,7 @@ public class CarRoutePlan extends Activity implements OnGetRoutePlanResultListen
     @Override
     public void onGetDrivingRouteResult(DrivingRouteResult drivingRouteResult) { //驾车路线规划
         if (drivingRouteResult == null || drivingRouteResult.error != SearchResult.ERRORNO.NO_ERROR) {
-            Toast.makeText(getApplicationContext(), "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CarRoutePlan.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
         }
         if (drivingRouteResult.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
             // 起终点或途经点地址有岐义，通过以下接口获取建议查询信息
@@ -196,7 +196,7 @@ public class CarRoutePlan extends Activity implements OnGetRoutePlanResultListen
                 MapStatus.Builder builder = new MapStatus.Builder();
                 builder.target(latLng);
                 baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-                Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
+                Toast.makeText(CarRoutePlan.this,text,Toast.LENGTH_SHORT).show();
             }
             return true;
         }
@@ -225,7 +225,7 @@ public class CarRoutePlan extends Activity implements OnGetRoutePlanResultListen
                 MapStatus.Builder builder = new MapStatus.Builder();
                 builder.target(latLng);
                 baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-                Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
+                Toast.makeText(CarRoutePlan.this,text,Toast.LENGTH_SHORT).show();
             }
             return true;
         }
@@ -253,7 +253,7 @@ public class CarRoutePlan extends Activity implements OnGetRoutePlanResultListen
                 MapStatus.Builder builder = new MapStatus.Builder();
                 builder.target(latLng);
                 baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-                Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
+                Toast.makeText(CarRoutePlan.this,text,Toast.LENGTH_SHORT).show();
             }
             return true;
         }

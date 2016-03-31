@@ -18,7 +18,7 @@ import com.zividig.zivapp.baidumap.GasStation;
  * 车辆生活
  * Created by Administrator on 2016-03-18.
  */
-public class CarLife extends Fragment {
+public class CarLife extends Fragment implements View.OnClickListener{
 
     private Button violationQuery;
     private MainActivity main;
@@ -35,24 +35,64 @@ public class CarLife extends Fragment {
         TextView title = (TextView)view.findViewById(R.id.tv_title);
         title.setText("车辆生活");
 
-        //违章查询按钮
+        //违章查询
         violationQuery = (Button) view.findViewById(R.id.bt_car_life_query);
         violationQuery.setOnClickListener(new violationQueryListener());
 
-        //加油站按钮
+        //加油站
         Button gasStation = (Button) view.findViewById(R.id.bt_car_gas_station);
-        gasStation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("加油站按钮被点击了");
-                //加油站
-                Intent intent = new Intent();
-                intent.setClass(main.getApplicationContext(), GasStation.class);
-                main.startActivity(intent);
-            }
-        });
+        gasStation.setOnClickListener(this);
+
+
+        //银行
+        Button bank = (Button) view.findViewById(R.id.bt_bank);
+        bank.setOnClickListener(this);
+
+        //酒店
+        Button hotel = (Button) view.findViewById(R.id.bt_hotel);
+        hotel.setOnClickListener(this);
+
+        //停车场
+        Button parking = (Button) view.findViewById(R.id.bt_parking);
+        parking.setOnClickListener(this);
 
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        Bundle bundle = new Bundle();
+        switch (v.getId()){
+
+            //加油站
+            case R.id.bt_car_gas_station:
+                System.out.println("加油站按钮被点击了");
+                bundle.putInt("service", 0);
+                break;
+
+            //银行
+            case R.id.bt_bank:
+                System.out.println("银行被点击了");
+                bundle.putInt("service", 1);
+                break;
+
+            //酒店
+            case R.id.bt_hotel:
+                System.out.println("酒店被点击了");
+                bundle.putInt("service", 2);
+                break;
+
+            //停车场
+            case R.id.bt_parking:
+                System.out.println("停车场被点击了");
+                bundle.putInt("service", 3);
+                break;
+        }
+
+        Intent intent = new Intent();
+        intent.putExtras(bundle);
+        intent.setClass(getContext(), GasStation.class);
+        main.startActivity(intent);
     }
 
     class violationQueryListener implements View.OnClickListener{
@@ -62,7 +102,7 @@ public class CarLife extends Fragment {
             System.out.println("违章查询按钮被点击了");
             //开启违章查询的类
             Intent weizhangIntent = new Intent();
-            weizhangIntent.setClass(main.getApplicationContext(), com.deahu.activity.MainActivity.class);
+            weizhangIntent.setClass(getContext(), com.deahu.activity.MainActivity.class);
             main.startActivity(weizhangIntent);
 
 
