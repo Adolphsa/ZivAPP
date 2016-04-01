@@ -6,12 +6,10 @@
 
     <include layout="@layout/layout_titlebar"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="设置"
-        android:textSize="22sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/setting_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

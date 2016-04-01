@@ -40,4 +40,5 @@ dependencies {
     compile project(':ViolocationQuery')
     compile files('libs/baidumapapi_base_v3_7_1.jar')
     compile project(':ViewPagerIndicatorLibrary')
+    compile'com.android.support:recyclerview-v7:23.2.1'
 }

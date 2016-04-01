@@ -37,17 +37,28 @@
                 />
 
         </LinearLayout>
-        <Button
-            android:id="@+id/bt_car_life_query"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="违章查询"
-            android:drawableBottom="@mipmap/weizhangchaxun"
-            android:background="@drawable/selector_car_life_button_bg"
-            android:padding="10dp"
-            android:gravity="left"
-            android:textColor="#00c8ff"
-            />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="@style/carLifeCarButtonStyle"
+                android:id="@+id/bt_car_life_query"
+                android:text="违章查询"
+                android:drawableBottom="@mipmap/violation_query"
+                />
+
+            <Button
+                style="@style/carLifeCarButtonStyle"
+                android:id="@+id/violation_query"
+                android:text="轨迹记录"
+                android:drawableBottom="@mipmap/track_record"
+                />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 
@@ -59,27 +70,27 @@
         android:orientation="horizontal"
         >
         <Button
-            style="@style/carLifeButtonStyle"
+            style="@style/carLifeServiceButtonStyle"
             android:id="@+id/bt_car_gas_station"
             android:text="加油站"
             android:drawableBottom="@mipmap/gas_station_icon"
             />
 
         <Button
-            style="@style/carLifeButtonStyle"
+            style="@style/carLifeServiceButtonStyle"
             android:id="@+id/bt_bank"
             android:layout_width="wrap_content"
             android:text="银行"
             android:drawableBottom="@mipmap/bank_icon"
             />
         <Button
-            style="@style/carLifeButtonStyle"
+            style="@style/carLifeServiceButtonStyle"
             android:id="@+id/bt_hotel"
             android:text="酒店"
             android:drawableBottom="@mipmap/hotel_icon"
             />
         <Button
-            style="@style/carLifeButtonStyle"
+            style="@style/carLifeServiceButtonStyle"
             android:id="@+id/bt_parking"
             android:text="停车场"
             android:drawableBottom="@mipmap/parking_icon"
