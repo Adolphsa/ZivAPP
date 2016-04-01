@@ -9,7 +9,7 @@
 
 
     <LinearLayout
-        android:background="@drawable/shape_service_bg"
+        android:background="#fff"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:orientation="vertical"
@@ -18,9 +18,10 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:background="@drawable/shape_service_bg"
             android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_height="40dp"
+            android:background="@drawable/shape_service_bg"
+            >
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="match_parent"
@@ -41,7 +42,8 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <Button
                 style="@style/carLifeCarButtonStyle"
@@ -68,6 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingBottom="5dp"
         >
         <Button
             style="@style/carLifeServiceButtonStyle"

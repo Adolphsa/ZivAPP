@@ -102,7 +102,7 @@ public class CarLocation extends Fragment {
         option.setOpenGps(true); // 打开gps
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);//高精度
         option.setCoorType("bd09ll");//可选，默认gcj02，设置返回的定位结果坐标系
-        option.setScanSpan(0);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
+        option.setScanSpan(1000);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
         option.setIsNeedAddress(true); //需要位置信息
         option.setNeedDeviceDirect(true);//返回的定位结果包含手机机头的方向
         mLocationClient.setLocOption(option);
@@ -114,11 +114,9 @@ public class CarLocation extends Fragment {
         mMyOrientationListener = new MyOrientationListener(
                 getContext());
         mMyOrientationListener
-                .setOnOrientationListener(new MyOrientationListener.OnOrientationListener()
-                {
+                .setOnOrientationListener(new MyOrientationListener.OnOrientationListener() {
                     @Override
-                    public void onOrientationChanged(float x)
-                    {
+                    public void onOrientationChanged(float x) {
                         mCurrentX = (int) x;
 
                         // 构造定位数据
@@ -132,7 +130,7 @@ public class CarLocation extends Fragment {
                         baiduMap.setMyLocationData(locData);
 
                         //设置标注
-                        MyLocationConfiguration config = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL,true,null);
+                        MyLocationConfiguration config = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL, true, null);
                         baiduMap.setMyLocationConfigeration(config);
 
                     }
@@ -224,5 +222,22 @@ public class CarLocation extends Fragment {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden){ //隐藏
+            System.out.println("车辆定位隐藏了");
+            mLocationClient.stop();
+            // 关闭定位图层
+            baiduMap.setMyLocationEnabled(false);
+
+        }else { //显示
+            System.out.println("车辆定位显示了");
+            mLocationClient.start();
+            // 关闭定位图层
+            baiduMap.setMyLocationEnabled(true);
+        }
     }
 }

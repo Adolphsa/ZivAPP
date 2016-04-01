@@ -97,4 +97,17 @@ public class CarInfo extends Fragment {
         xEnd = speedTest[i];
         i++;
     }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden){ //隐藏
+            System.out.println("车辆信息隐藏了");
+
+
+        }else { //显示
+            System.out.println("车辆信息显示了");
+            initView();
+        }
+    }
 }

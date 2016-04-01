@@ -1,4 +1,4 @@
-package com.zividig.zivapp.baidumap;
+package com.zividig.zivapp.recyclerviewlist;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

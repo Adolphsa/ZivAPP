@@ -119,7 +119,6 @@ public class MainActivity extends FragmentActivity {
                         carLocationFragment = new CarLocation();
                         transaction.add(R.id.framelayout, carLocationFragment);
                     }else {
-                        carLocationFragment.onResume();
                         transaction.show(carLocationFragment);
                     }
                     break;

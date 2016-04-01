@@ -1,4 +1,4 @@
-package com.zividig.zivapp.recyclerlist;
+package com.zividig.zivapp.recyclerviewlist;
 
 import android.content.Context;
 import android.content.res.TypedArray;

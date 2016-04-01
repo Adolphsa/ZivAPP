@@ -9,12 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zividig.zivapp.R;
-import com.zividig.zivapp.baidumap.MyRecyclerAdapter;
-import com.zividig.zivapp.recyclerlist.AdvanceDecoration;
+import com.zividig.zivapp.recyclerviewlist.MyRecyclerAdapter;
+import com.zividig.zivapp.recyclerviewlist.AdvanceDecoration;
 
 /**
  * 设置
