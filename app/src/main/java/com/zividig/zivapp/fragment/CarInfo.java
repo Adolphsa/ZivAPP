@@ -33,18 +33,18 @@ public class CarInfo extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_car_information,container,false);
+        View view = inflater.inflate(R.layout.car_information,container,false);
 
-        speedPoint = (ImageView) view.findViewById(R.id.img_speed_point);
-        voltagePoint = (ImageView) view.findViewById(R.id.img_voltage_point);
-        turnSpeedPoint = (ImageView) view.findViewById(R.id.img_turn_speed_point);
-        temperaturePoint = (ImageView) view.findViewById(R.id.img_temperature_point);
+//        speedPoint = (ImageView) view.findViewById(R.id.img_speed_point);
+//        voltagePoint = (ImageView) view.findViewById(R.id.img_voltage_point);
+//        turnSpeedPoint = (ImageView) view.findViewById(R.id.img_turn_speed_point);
+//        temperaturePoint = (ImageView) view.findViewById(R.id.img_temperature_point);
 
         //设置标题
         TextView title = (TextView)view.findViewById(R.id.tv_title);
         title.setText("车辆信息");
 
-        initView();
+//        initView();
         return view;
     }
 
@@ -83,10 +83,6 @@ public class CarInfo extends Fragment {
         temperaturePoint.setAnimation(temperatureRotate);
     }
 
-//    public void onHiddenChanged(boolean hidden){
-//        System.out.println("方法被调用");
-//        initAnimation();
-//    }
 
     public void speedAnimation(int xStart,int xEnd){
         speedRotate = new RotateAnimation(xStart,xEnd, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
