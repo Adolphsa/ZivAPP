@@ -22,6 +22,7 @@
         <activity android:name=".baidumap.GasStation"/>
         <activity android:name=".baidumap.CarRoutePlan"/>
         <activity android:name=".baidumap.LookRoute" android:theme="@style/Theme.PageIndicatorDefaults"/>
+        <activity android:name=".baidumap.TrackRecord"/>
         <!-- 定位服务-->
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
 

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.zividig.zivapp.MainActivity;
 import com.zividig.zivapp.R;
 import com.zividig.zivapp.baidumap.GasStation;
+import com.zividig.zivapp.baidumap.TrackRecord;
 
 /**
  * 车辆生活
@@ -35,9 +36,14 @@ public class CarLife extends Fragment implements View.OnClickListener{
         TextView title = (TextView)view.findViewById(R.id.tv_title);
         title.setText("车辆生活");
 
+        ViolationQueryListener listener = new ViolationQueryListener();
         //违章查询
         violationQuery = (Button) view.findViewById(R.id.bt_car_life_query);
-        violationQuery.setOnClickListener(new violationQueryListener());
+        violationQuery.setOnClickListener(listener);
+
+        //轨迹查询
+        Button trackQuery = (Button) view.findViewById(R.id.bt_car_life_track_query);
+        trackQuery.setOnClickListener(listener);
 
         //加油站
         Button gasStation = (Button) view.findViewById(R.id.bt_car_gas_station);
@@ -95,15 +101,26 @@ public class CarLife extends Fragment implements View.OnClickListener{
         main.startActivity(intent);
     }
 
-    class violationQueryListener implements View.OnClickListener{
+    class ViolationQueryListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
-            System.out.println("违章查询按钮被点击了");
-            //开启违章查询的类
-            Intent weizhangIntent = new Intent();
-            weizhangIntent.setClass(getContext(), com.deahu.activity.MainActivity.class);
-            main.startActivity(weizhangIntent);
+            switch (v.getId()){
+                case R.id.bt_car_life_query:
+                    System.out.println("违章查询按钮被点击了");
+                    //开启违章查询的类
+                    Intent weizhangIntent = new Intent();
+                    weizhangIntent.setClass(getContext(), com.deahu.activity.MainActivity.class);
+                    main.startActivity(weizhangIntent);
+                    break;
+                case R.id.bt_car_life_track_query:
+                    System.out.println("轨迹查询被点击了");
+                    Intent trackRecordIntent = new Intent();
+                    trackRecordIntent.setClass(getContext(), TrackRecord.class);
+                    main.startActivity(trackRecordIntent);
+                    break;
+            }
+
 
 
         }

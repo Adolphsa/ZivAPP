@@ -54,7 +54,7 @@
 
             <Button
                 style="@style/carLifeCarButtonStyle"
-                android:id="@+id/violation_query"
+                android:id="@+id/bt_car_life_track_query"
                 android:text="轨迹记录"
                 android:drawableBottom="@mipmap/track_record"
                 />
