@@ -49,7 +49,7 @@
             android:layout_marginTop="10dp"
             />
         <ImageView
-            android:id="@+id/carinfo_needle_speed"
+            android:id="@+id/img_speed_point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/dash_needle"
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/holo_red_light"
-                android:text="20"
+
                 android:gravity="center"
                 />
             <TextView
@@ -146,7 +146,7 @@
                 android:src="@mipmap/dashboard_oil"
                 />
             <ImageView
-                android:id="@+id/carinfo_needle_oil"
+                android:id="@+id/img_oil_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/needle_oil"
@@ -164,7 +164,7 @@
                 android:src="@mipmap/dashboard_speed"
                 />
             <ImageView
-                android:id="@+id/carinfo_needle_turing"
+                android:id="@+id/img_turning_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/needle_speed"
@@ -186,7 +186,7 @@
                 android:src="@mipmap/dashboard_temperature"
                 />
             <ImageView
-                android:id="@+id/carinfo_needle_temperature"
+                android:id="@+id/img_temperature_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/needle_oil"
