@@ -7,7 +7,7 @@
         android:icon="@mipmap/zividigxh"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@android:style/Theme.Holo.Light">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WZQYh7pIr0CtZSAc0qgUG8kz" />
@@ -22,7 +22,7 @@
         <activity android:name=".baidumap.GasStation"/>
         <activity android:name=".baidumap.CarRoutePlan"/>
         <activity android:name=".baidumap.LookRoute" android:theme="@style/Theme.PageIndicatorDefaults"/>
-        <activity android:name=".baidumap.TrackRecord"/>
+        <activity android:name=".baidumap.TrackRecord" android:theme="@android:style/Theme.Holo.Light"/>
         <!-- 定位服务-->
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
 

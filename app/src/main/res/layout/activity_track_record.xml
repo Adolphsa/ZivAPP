@@ -3,11 +3,79 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <include layout="@layout/layout_titlebar"/>
-    <TextView
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="我是轨迹查询"
+        android:padding="8dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请选择开始日期"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_gravity="left"
+            />
+        <ImageButton
+            style="@style/TrackImageButtonStyle"
+            android:id="@+id/imbtn_start_date_picker"
+            android:src="@drawable/selector_calendar"
+            />
+        <ImageButton
+            style="@style/TrackImageButtonStyle"
+            android:id="@+id/imbtn_start_time_picker"
+            android:src="@drawable/selector_time"
+           />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_start_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始日期"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:layout_gravity="left"
         />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请选择结束日期"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_gravity="left"
+            />
+        <ImageButton
+            style="@style/TrackImageButtonStyle"
+            android:id="@+id/imbtn_end_date_picker"
+            android:src="@drawable/selector_calendar"
+            />
+        <ImageButton
+            style="@style/TrackImageButtonStyle"
+            android:id="@+id/imbtn_end_time_picker"
+            android:src="@drawable/selector_time"
+            />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="结束日期"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:layout_gravity="left"
+        />
+
 
 </LinearLayout>
