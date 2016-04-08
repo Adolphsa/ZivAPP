@@ -37,10 +37,11 @@
         android:id="@+id/tv_start_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="开始日期"
+        android:hint="请选择开始日期和时间"
         android:textSize="18sp"
-        android:padding="8dp"
+        android:padding="10dp"
         android:layout_gravity="left"
+        android:background="@drawable/shape_track_rectangle_bg"
         />
     <LinearLayout
         android:orientation="horizontal"
@@ -69,12 +70,23 @@
     </LinearLayout>
     <TextView
         android:id="@+id/tv_end_time"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="结束日期"
+        android:hint="请选择结束日期和时间"
         android:textSize="18sp"
-        android:padding="8dp"
+        android:padding="10dp"
         android:layout_gravity="left"
+        android:background="@drawable/shape_track_rectangle_bg"
+        />
+    <Button
+        android:id="@+id/btn_track_record_query"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="查询"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#fff"
+        android:background="@drawable/selector_track_record_query"
+        android:layout_marginTop="30dp"
         />
 
 

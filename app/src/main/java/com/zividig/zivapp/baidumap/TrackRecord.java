@@ -11,8 +11,10 @@ import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.zividig.zivapp.R;
+import com.zividig.zivapp.utils.DateUtils;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -33,7 +35,10 @@ public class TrackRecord extends Activity implements View.OnClickListener{
     private int hour;
     private int minute;
     private String dateString;
-    private String timeString;
+    private String realDate;
+    private String realTime;
+    private String endDateAndTime;
+    private String startDateAndTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,22 @@ public class TrackRecord extends Activity implements View.OnClickListener{
             }
         });
 
+        Button recordQuery = (Button) findViewById(R.id.btn_track_record_query);
+        recordQuery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("查询按钮");
+                if (startDateAndTime  != null && endDateAndTime != null){
+                    String startTimestamp = DateUtils.data(startDateAndTime); //开始时间戳
+                    String endTimestamp = DateUtils.data(endDateAndTime); //结束时间戳
+                    System.out.println("开始时间戳---" + startTimestamp);
+                    System.out.println("结束时间戳---" + endTimestamp);
+                }else {
+                    Toast.makeText(TrackRecord.this,"请先选择时间和日期",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         //开始日期
         ImageButton startDate = (ImageButton) findViewById(R.id.imbtn_start_date_picker);
         ImageButton startTime = (ImageButton) findViewById(R.id.imbtn_start_time_picker);
@@ -71,10 +92,13 @@ public class TrackRecord extends Activity implements View.OnClickListener{
         endDate.setOnClickListener(this);
         endtTime.setOnClickListener(this);
 
-        initcalendar();
+        initCalendar();
     }
 
-    public void initcalendar(){
+    /**
+     * 初始化日历  获取时间
+     */
+    public void initCalendar(){
         //初始化Calendar日历对象
         Calendar calendar=Calendar.getInstance(Locale.CHINA);
         Date myDate=new Date(); //获取当前日期Date对象
@@ -88,13 +112,29 @@ public class TrackRecord extends Activity implements View.OnClickListener{
 
     }
 
-    public void createDatePicker(){
+    /**
+     * 创建日期选择器
+     * @param v
+     */
+    public void createDatePicker(final int v){
 
         DatePickerDialog dateDialog = new DatePickerDialog(TrackRecord.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                dateString = year + "/" + (monthOfYear+1)  + "/" + dayOfMonth;
-                start.setText(dateString);
+                switch (v){
+                    case R.id.imbtn_start_date_picker:
+                        dateString = year + "/" + (monthOfYear+1)  + "/" + dayOfMonth;
+                        realDate = year + "年" + (monthOfYear+1) + "月" + dayOfMonth +"日";
+                        start.setText(dateString);
+                        break;
+                    case R.id.imbtn_end_date_picker:
+                        dateString = year + "/" + (monthOfYear+1)  + "/" + dayOfMonth;
+                        realDate = year + "年" + (monthOfYear+1) + "月" + dayOfMonth +"日";
+                        end.setText(dateString);
+                        break;
+                }
+
+
             }
         },year,month,day);
 
@@ -102,7 +142,11 @@ public class TrackRecord extends Activity implements View.OnClickListener{
 
     }
 
-    public void createTimePicker(){
+    /**
+     * 常见时间选择器
+     * @param v
+     */
+    public void createTimePicker(final int v){
         TimePickerDialog timeDialog = new TimePickerDialog(TrackRecord.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -112,9 +156,28 @@ public class TrackRecord extends Activity implements View.OnClickListener{
                 }else {
                     myMinute = minute + "";
                 }
-                timeString = "  " + hourOfDay + ":" + myMinute ;
-                start.setText(dateString + timeString);
-                System.out.println(minute);
+                if (dateString != null ){ //判断日期是否为空
+                    switch (v){
+                        case R.id.imbtn_start_time_picker:
+                            String startTimeString = "  " + hourOfDay + ":" + myMinute ;
+                            realTime = hourOfDay + "时" + myMinute + "分" + "00秒";
+                            System.out.println(realDate + realTime);
+                            startDateAndTime = realDate + realTime; //用来转换时间戳的时间   开始时间
+                            start.setText(dateString + startTimeString);
+                            break;
+                        case R.id.imbtn_end_time_picker:
+                            String endTimeString = "  " + hourOfDay + ":" + myMinute ;
+                            realTime = hourOfDay + "时" + myMinute + "分" + "00秒";
+                            System.out.println(realDate + realTime);
+                            endDateAndTime = realDate + realTime;  //用来转换时间戳的时间   结束时间
+                            end.setText(dateString + endTimeString);
+                            break;
+                    }
+                }else {
+                    Toast.makeText(TrackRecord.this,"请先选择日期",Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         },hour,minute,true);
 
@@ -126,19 +189,19 @@ public class TrackRecord extends Activity implements View.OnClickListener{
         switch (v.getId()){
             case R.id.imbtn_start_date_picker:
                 System.out.println("开始日期被点击了");
-                createDatePicker();
+                createDatePicker(v.getId());
                 break;
             case R.id.imbtn_start_time_picker:
                 System.out.println("开始时间被点击了");
-                createTimePicker();
+                createTimePicker(v.getId());
                 break;
             case R.id.imbtn_end_date_picker:
                 System.out.println("结束日期被点击了");
-                createDatePicker();
+                createDatePicker(v.getId());
                 break;
             case R.id.imbtn_end_time_picker:
                 System.out.println("结束时间被点击了");
-                createTimePicker();
+                createTimePicker(v.getId());
                 break;
         }
     }
