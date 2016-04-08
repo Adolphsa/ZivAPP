@@ -34,7 +34,10 @@ public class TrackRecord extends Activity implements View.OnClickListener{
     private int day;
     private int hour;
     private int minute;
+
+    //显示在textView中的日期
     private String dateString;
+    
     private String realDate;
     private String realTime;
     private String endDateAndTime;
@@ -139,7 +142,7 @@ public class TrackRecord extends Activity implements View.OnClickListener{
             }
         },year,month,day);
 
-        dateDialog.show();
+        dateDialog.show(); //显示日期选择器
 
     }
 
@@ -182,7 +185,7 @@ public class TrackRecord extends Activity implements View.OnClickListener{
             }
         },hour,minute,true);
 
-        timeDialog.show();
+        timeDialog.show(); //显示时间选择器
     }
 
     @Override

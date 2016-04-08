@@ -7,7 +7,7 @@
         android:icon="@mipmap/zividigxh"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Holo.Light">
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WZQYh7pIr0CtZSAc0qgUG8kz" />
