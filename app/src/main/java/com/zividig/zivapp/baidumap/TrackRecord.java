@@ -93,6 +93,7 @@ public class TrackRecord extends Activity implements View.OnClickListener{
         endtTime.setOnClickListener(this);
 
         initCalendar();
+
     }
 
     /**
