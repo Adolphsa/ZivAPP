@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
+ * 转换工具类
  * Created by Administrator on 2016-04-08.
  */
 public class DateUtils {
