@@ -5,4 +5,5 @@ package com.zividig.zivapp.baidumap;
  * Created by Administrator on 2016-04-09.
  */
 public class TrackRecordMap {
+    //等地图数据出来之后再继续做
 }
