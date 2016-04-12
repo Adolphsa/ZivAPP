@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zividig.zivapp">
+    package="com.zividig.zivapp"
+    android:versionCode="1"
+    android:versionName="1.0"
+    >
 
     <application
         android:allowBackup="true"
@@ -11,7 +14,7 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WZQYh7pIr0CtZSAc0qgUG8kz" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,6 +22,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MainActivity"/>
         <activity android:name=".baidumap.GasStation"/>
         <activity android:name=".baidumap.CarRoutePlan"/>
         <activity android:name=".baidumap.LookRoute" android:theme="@style/Theme.PageIndicatorDefaults"/>

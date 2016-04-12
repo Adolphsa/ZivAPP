@@ -1,18 +1,15 @@
 package com.zividig.zivapp;
 
-import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.Window;
 import android.widget.RadioGroup;
 
 import com.baidu.mapapi.SDKInitializer;
-import com.cheshouye.api.client.WeizhangIntentService;
 import com.zividig.zivapp.fragment.CarInfo;
 import com.zividig.zivapp.fragment.CarLife;
 import com.zividig.zivapp.fragment.CarLocation;
@@ -43,7 +40,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         SDKInitializer.initialize(getApplicationContext());
-        setContentView(R.layout.acticity_main);
+        setContentView(R.layout.activity_main);
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         fragmentManager = getSupportFragmentManager();
 
