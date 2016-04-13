@@ -8,12 +8,12 @@
         "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_btn.xml"
     },
     {
-        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_textbox.xml",
-        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_textbox.xml"
-    },
-    {
         "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_btn_light.xml",
         "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_btn_light.xml"
+    },
+    {
+        "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_textbox.xml",
+        "source": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\bundles\\debug\\res\\drawable\\csy_textbox.xml"
     },
     {
         "merged": "F:\\androidWorkingSpace\\ZivApp\\ViolocationQuery\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\csy_select.xml",
