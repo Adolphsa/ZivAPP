@@ -35,7 +35,7 @@ import java.net.URL;
  * 闪屏页面 检查版本更新
  * Created by Administrator on 2016-04-12.
  */
-public class SplashActivity extends Activity{
+public class SplashActivity extends Activity {
 
     protected static final int CODE_UPDATE_DIALOG = 0;
     protected static final int CODE_URL_ERROR = 1;
@@ -52,10 +52,10 @@ public class SplashActivity extends Activity{
     private String mDesc;// 版本描述
     private String mDownloadUrl;// 下载地址
 
-    private Handler mHandler = new Handler(){
+    private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what){
+            switch (msg.what) {
                 case CODE_UPDATE_DIALOG:
                     showUpdateDailog();
                     break;
@@ -98,6 +98,7 @@ public class SplashActivity extends Activity{
 
     /**
      * 得到版本名称
+     *
      * @return
      */
     private String getVersionName() {
@@ -145,9 +146,9 @@ public class SplashActivity extends Activity{
     /**
      * 检查版本更新
      */
-    private void checkVersion(){
+    private void checkVersion() {
         final long startTime = System.currentTimeMillis();
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 Message msg = Message.obtain();
@@ -165,7 +166,7 @@ public class SplashActivity extends Activity{
                     if (responseCode == 200) {
                         InputStream inputStream = conn.getInputStream();
                         String result = StreamUtils.readFromStream(inputStream);
-                         System.out.println("网络返回:" + result);
+                        System.out.println("网络返回:" + result);
 
                         // 解析json
                         JSONObject jo = new JSONObject(result);
@@ -221,7 +222,7 @@ public class SplashActivity extends Activity{
     /**
      * 升级对话框
      */
-    private void showUpdateDailog(){
+    private void showUpdateDailog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("最新版本:" + mVersionName);
         builder.setMessage(mDesc);
@@ -257,8 +258,8 @@ public class SplashActivity extends Activity{
     /**
      * 下载APk文件
      */
-    private void download(){
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+    private void download() {
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             tvProgress.setVisibility(View.VISIBLE);// 显示进度
 
             String target = Environment.getExternalStorageDirectory()
@@ -297,7 +298,7 @@ public class SplashActivity extends Activity{
                             Toast.LENGTH_SHORT).show();
                 }
             });
-        }else {
+        } else {
             Toast.makeText(SplashActivity.this, "没有找到sdcard!",
                     Toast.LENGTH_SHORT).show();
         }
@@ -314,8 +315,8 @@ public class SplashActivity extends Activity{
     /**
      * 进入主界面
      */
-    private void enterMainActivity(){
-        Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+    private void enterMainActivity() {
+        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
