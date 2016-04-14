@@ -93,6 +93,7 @@ public class SplashActivity extends Activity {
 
         tvVersionName = (TextView) findViewById(R.id.tv_versionname);
         tvVersionName.setText("智威视讯" + getVersionName());
+
         checkVersion(); //检查版本更新
     }
 
