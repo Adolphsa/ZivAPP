@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ToggleButtonLib/ToggleButtonLib.iml" filepath="$PROJECT_DIR$/ToggleButtonLib/ToggleButtonLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicatorLibrary/ViewPagerIndicatorLibrary.iml" filepath="$PROJECT_DIR$/ViewPagerIndicatorLibrary/ViewPagerIndicatorLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViolocationQuery/ViolocationQuery.iml" filepath="$PROJECT_DIR$/ViolocationQuery/ViolocationQuery.iml" />
       <module fileurl="file://$PROJECT_DIR$/ZivApp.iml" filepath="$PROJECT_DIR$/ZivApp.iml" />

@@ -1,5 +1,6 @@
 package com.zividig.zivapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.zividig.zivapp.R;
 import com.zividig.zivapp.recyclerviewlist.MyRecyclerAdapter;
 import com.zividig.zivapp.recyclerviewlist.AdvanceDecoration;
+import com.zividig.zivapp.setting.SettingItem;
 
 /**
  * 设置
@@ -48,5 +50,15 @@ public class Setting extends Fragment implements MyRecyclerAdapter.OnRecyclerVie
     @Override
     public void onItemClick(int position) {
         System.out.println("Setting-----" +position);
+        switch (position){
+            case 0:
+                Intent intent = new Intent(getActivity(), SettingItem.class);
+                startActivity(intent);
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
     }
 }

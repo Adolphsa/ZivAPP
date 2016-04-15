@@ -2,8 +2,10 @@ package com.zividig.zivapp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -94,7 +96,17 @@ public class SplashActivity extends Activity {
         tvVersionName = (TextView) findViewById(R.id.tv_versionname);
         tvVersionName.setText("智威视讯" + getVersionName());
 
-        checkVersion(); //检查版本更新
+        SharedPreferences config = getSharedPreferences("config",MODE_PRIVATE);
+        boolean auto_update = config.getBoolean("auto_update", true);
+        System.out.println("自动更新默认" + auto_update);
+
+        if (auto_update){
+            checkVersion(); //检查版本更新
+
+        }else {
+            mHandler.sendEmptyMessageDelayed(CODE_ENTER_HOME,2000); //延时2s后发送消息进入主页面
+        }
+
     }
 
     /**
@@ -156,7 +168,7 @@ public class SplashActivity extends Activity {
                 HttpURLConnection conn = null;
                 try {
                     // 本机地址用localhost, 但是如果用模拟器加载本机的地址时,可以用ip(10.0.2.2)来替换
-                    URL url = new URL("http://192.168.1.102:8080/update.json");
+                    URL url = new URL("http://192.168.1.101:8080/update.json");
                     conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("GET");// 设置请求方法
                     conn.setConnectTimeout(5000);// 设置连接超时

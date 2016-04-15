@@ -1,2 +1,2 @@
-include ':app', 'ViolocationQuery'
+include ':app', 'ViolocationQuery', ':ToggleButtonLib'
 include ':ViewPagerIndicatorLibrary'
