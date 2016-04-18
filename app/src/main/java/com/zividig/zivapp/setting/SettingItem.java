@@ -1,7 +1,6 @@
 package com.zividig.zivapp.setting;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
