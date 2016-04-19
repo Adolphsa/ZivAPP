@@ -6,12 +6,36 @@
 
     <include layout="@layout/layout_titlebar"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="实时预览"
-        android:textSize="22sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
+    <com.bm.library.PhotoView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        >
+        <Button
+            android:id="@+id/bt_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="刷新"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/bt_downImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="保存图片"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            />
+
+
+    </LinearLayout>
 </LinearLayout>

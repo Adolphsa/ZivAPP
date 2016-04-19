@@ -13,8 +13,8 @@ import com.baidu.mapapi.SDKInitializer;
 import com.zividig.zivapp.fragment.CarInfo;
 import com.zividig.zivapp.fragment.CarLife;
 import com.zividig.zivapp.fragment.CarLocation;
-import com.zividig.zivapp.fragment.Setting;
 import com.zividig.zivapp.fragment.RealTime;
+import com.zividig.zivapp.fragment.Setting;
 
 /**
  * 主页面
