@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.zcw.togglebutton.ToggleButton;
 import com.zividig.zivapp.R;
+import com.zividig.zivapp.view.ToggleButton;
 
 /**
  * 设置选项细节
