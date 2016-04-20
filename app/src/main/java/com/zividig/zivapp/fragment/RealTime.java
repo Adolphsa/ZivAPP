@@ -20,9 +20,7 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.zividig.zivapp.R;
 
 import java.io.File;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 /**
  * 实时预览
@@ -30,7 +28,13 @@ import java.util.Calendar;
  */
 public class RealTime extends Fragment {
 
-    private static String mImgUrl = "http://192.168.1.102:8080/test_picture.jpg";
+    private static String[] mImgUrl = {"http://192.168.1.102:8080/picture/test_pic0.jpg",
+                                        "http://192.168.1.102:8080/picture/test_pic1.jpg",
+                                        "http://192.168.1.102:8080/picture/test_pic2.jpg",
+                                        "http://192.168.1.102:8080/picture/test_pic3.jpg",
+                                        "http://192.168.1.102:8080/picture/test_pic4.jpg",
+    };
+    private int i;
     private PhotoView photoView;
     private BitmapUtils bitmapUtils;
     private HttpUtils http;
@@ -66,8 +70,18 @@ public class RealTime extends Fragment {
      * 获取图片
      */
     private void getImage(){
+
         bitmapUtils = new BitmapUtils(getContext());
-        bitmapUtils.display(photoView,mImgUrl);
+        bitmapUtils.display(photoView,mImgUrl[i]);
+
+        if (i >= 4){
+            i = i%4;
+            System.out.println("if语句运行" + i);
+        }else {
+            System.out.println("----" + i);
+            i++;
+        }
+
     }
 
     public void downImage(){
@@ -75,10 +89,11 @@ public class RealTime extends Fragment {
 
             String target = Environment.getExternalStorageDirectory()  + "/" +getDateAndTime() + ".jpg";
             System.out.println(target);
-            http.download(mImgUrl, target, false, new RequestCallBack<File>() {
+            http.download(mImgUrl[i], target, false, new RequestCallBack<File>() {
                 @Override
                 public void onSuccess(ResponseInfo<File> responseInfo) {
                     Toast.makeText(getContext(),"图片已下载",Toast.LENGTH_SHORT).show();
+                    System.out.println(mImgUrl[i] + "---" + i);
                 }
 
                 @Override
@@ -96,6 +111,7 @@ public class RealTime extends Fragment {
         System.out.println(date);
         return date;
     }
+
     class BtnListener implements View.OnClickListener{
 
         @Override
