@@ -1,5 +1,7 @@
 package com.zividig.zivapp.fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -8,12 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bm.library.PhotoView;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadFrom;
+import com.lidroid.xutils.bitmap.callback.DefaultBitmapLoadCallBack;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
@@ -28,16 +34,16 @@ import java.text.SimpleDateFormat;
  */
 public class RealTime extends Fragment {
 
-    private static String[] mImgUrl = {"http://192.168.1.102:8080/picture/test_pic0.jpg",
-                                        "http://192.168.1.102:8080/picture/test_pic1.jpg",
-                                        "http://192.168.1.102:8080/picture/test_pic2.jpg",
-                                        "http://192.168.1.102:8080/picture/test_pic3.jpg",
-                                        "http://192.168.1.102:8080/picture/test_pic4.jpg",
-    };
+    private static String[] mImgUrl = {"http://120.25.80.80/~adolph/zivApp/picture/test_pic0.jpg",
+                                        "http://120.25.80.80/~adolph/zivApp/picture/test_pic1.jpg",
+                                        "http://120.25.80.80/~adolph/zivApp/picture/test_pic2.jpg",
+                                        "http://120.25.80.80/~adolph/zivApp/picture/test_pic3.jpg",
+                                        "http://120.25.80.80/~adolph/zivApp/picture/test_pic4.jpg"};
     private int i;
     private PhotoView photoView;
     private BitmapUtils bitmapUtils;
     private HttpUtils http;
+    private ProgressBar pbImage;
 
     @Nullable
     @Override
@@ -49,15 +55,21 @@ public class RealTime extends Fragment {
         TextView title = (TextView)view.findViewById(R.id.tv_title);
         title.setText("实时预览");
 
+        //进度条
+        pbImage = (ProgressBar) view.findViewById(R.id.pb_img);
+
+        //按钮
         BtnListener listener = new BtnListener();
         Button btRefresh = (Button) view.findViewById(R.id.bt_refresh); //图片刷新
         Button btDownImage = (Button) view.findViewById(R.id.bt_downImage); //图片下载
         btRefresh.setOnClickListener(listener);
         btDownImage.setOnClickListener(listener);
 
+        //图片下载
         bitmapUtils = new BitmapUtils(getContext());
         http = new HttpUtils();
 
+        //图片显示空间
         photoView = (PhotoView) view.findViewById(R.id.img);
         photoView.enable();
 
@@ -72,7 +84,31 @@ public class RealTime extends Fragment {
     private void getImage(){
 
         bitmapUtils = new BitmapUtils(getContext());
-        bitmapUtils.display(photoView,mImgUrl[i]);
+        bitmapUtils.display(photoView, mImgUrl[i], new DefaultBitmapLoadCallBack<PhotoView>(){
+
+            @Override
+            public void onLoadStarted(PhotoView container, String uri, BitmapDisplayConfig config) {
+                super.onLoadStarted(container, uri, config);
+                System.out.println("开始下载");
+                pbImage.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onLoading(PhotoView container, String uri, BitmapDisplayConfig config, long total, long current) {
+                super.onLoading(container, uri, config, total, current);
+                System.out.println("正在下载");
+            }
+
+            @Override
+            public void onLoadCompleted(PhotoView container, String uri, Bitmap bitmap, BitmapDisplayConfig config, BitmapLoadFrom from) {
+                super.onLoadCompleted(container, uri, bitmap, config, from);
+                System.out.println("下载完成");
+                pbImage.setVisibility(View.INVISIBLE);
+            }
+        }
+       );
+//        bitmapUtils.display(photoView,mImgUrl[i]);
+
 
         if (i >= 4){
             i = i%4;

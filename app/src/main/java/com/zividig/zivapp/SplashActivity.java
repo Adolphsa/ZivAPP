@@ -167,7 +167,7 @@ public class SplashActivity extends Activity {
                 HttpURLConnection conn = null;
                 try {
                     // 本机地址用localhost, 但是如果用模拟器加载本机的地址时,可以用ip(10.0.2.2)来替换
-                    URL url = new URL("http://192.168.1.101:8080/update.json");
+                    URL url = new URL("http://120.25.80.80/~adolph/zivApp/ziv_update.json");
                     conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("GET");// 设置请求方法
                     conn.setConnectTimeout(5000);// 设置连接超时
