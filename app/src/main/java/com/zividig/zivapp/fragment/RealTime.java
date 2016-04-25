@@ -120,6 +120,9 @@ public class RealTime extends Fragment {
 
     }
 
+    /**
+     * 下载图片
+     */
     public void downImage(){
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
 
@@ -141,6 +144,10 @@ public class RealTime extends Fragment {
         }
     }
 
+    /***
+     * 获取时间和日期
+     * @return string
+     */
     public String getDateAndTime(){
         SimpleDateFormat sDateFormat =  new SimpleDateFormat("yyyyMMddHHmmss");
         String date = sDateFormat.format(new java.util.Date());
