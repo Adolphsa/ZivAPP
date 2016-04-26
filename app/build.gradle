@@ -20,6 +20,16 @@ android {
         signingConfig signingConfigs.config
 
         multiDexEnabled true
+        // 指定multiDexKeep.pro文件作为multidex keep描述文件
+        multiDexKeepProguard file('multiDexKeep.pro')
+        //参数说明
+        manifestPlaceholders = [
+                GETUI_APP_ID : "f73zcdn0eMA3UU4AmPsuM9",
+                GETUI_APP_KEY : "UFXKCozWfQ7WmrAIemxmHA",
+                GETUI_APP_SECRET : "SdM0crf8io6XU3YQWKeBp5",
+                PACKAGE_NAME : applicationId
+        ]
+
     }
     buildTypes {
         release {
@@ -47,4 +57,7 @@ dependencies {
     compile files('libs/rebound-0.3.8.jar')
     compile files('libs/baidumapapi_base_v3_7_3.jar')
     compile 'com.bm.photoview:library:1.3.6'
+    compile 'com.getui:sdk:2.8.1.0'
+    compile 'com.getui:ext:2.0.3'
+    compile 'com.android.support:support-v4:23.3.0'
 }

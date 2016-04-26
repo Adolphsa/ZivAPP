@@ -29,8 +29,16 @@
         <!-- 定位服务-->
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
 
+        <!-- 配置第三方Receiver -->
+        <receiver
+            android:name=".getui.PushReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.${GETUI_APP_ID}" />
+            </intent-filter>
+        </receiver>
 
-    </application>
+</application>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -48,4 +56,13 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- iBeancon功能所需权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!-- 个推3.0电子围栏功能所需权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 </manifest>
