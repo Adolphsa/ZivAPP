@@ -23,6 +23,8 @@ import org.json.JSONObject;
  */
 public class PushReceiver extends BroadcastReceiver {
 
+
+
     //透传过来的信息
     private String title;
     private String content;
