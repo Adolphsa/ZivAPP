@@ -11,6 +11,7 @@ import android.support.v7.app.NotificationCompat;
 import android.text.TextUtils;
 
 import com.igexin.sdk.PushConsts;
+import com.igexin.sdk.PushManager;
 import com.zividig.zivapp.MainActivity;
 import com.zividig.zivapp.R;
 
@@ -45,7 +46,14 @@ public class PushReceiver extends BroadcastReceiver {
             case PushConsts.GET_MSG_DATA:
 
                 String taskid = bundle.getString("taskid");
+                System.out.println("----taskid" + taskid);
                 String messageid = bundle.getString("messageid");
+                System.out.println("----messageid" + messageid);
+
+                // smartPush第三方回执调用接口，actionid范围为90000-90999，可根据业务场景执行
+                boolean result = PushManager.getInstance().sendFeedbackMessage(context, taskid, messageid, 90001);
+                System.out.println("第三方回执接口调用" + (result ? "成功" : "失败"));
+
                 byte[] payload = bundle.getByteArray("payload");
                 if (payload != null) {
                     String data = new String(payload);
